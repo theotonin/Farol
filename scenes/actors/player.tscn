@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_script"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_player"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape_body"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape_attack"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape_interaction"]
+radius = 68.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_player")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape_body")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape_attack")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape_interaction")

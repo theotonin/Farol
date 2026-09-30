@@ -1,0 +1,139 @@
+{"kind":"deck","id":"pr/8cfyjv","name":"Deck"}
+{"kind":"layout","layoutId":"5193c3f3-af37-4305-ad17-735dceeb0380","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"db44ab10-ecc6-4d96-b20f-5f15263d1fb9","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/gg4yn2","slide":1,"title":"BEHIND THE WALLS","textShapes":6}
+{"kind":"shape","id":"sh/2p4jydkz","slide":1,"bbox":[0,0,690,720]}
+{"kind":"textbox","id":"sh/naxkri1k","slide":1,"text":"BEHIND THE WALLS","textPreview":"BEHIND THE WALLS","textChars":16,"textLines":1,"bbox":[64,52,520,30]}
+{"kind":"shape","id":"sh/0nm1w32t","slide":1,"bbox":[64,96,560,0]}
+{"kind":"textbox","id":"sh/1ovip8je","slide":1,"text":"Tremembé\nPrison","textPreview":"Tremembé | Prison","textChars":15,"textLines":2,"bbox":[64,138,560,180]}
+{"kind":"textbox","id":"sh/el4judkn","slide":1,"text":"Behind Brazil's “Prison of Celebrities”","textPreview":"Behind Brazil's “Prison of Celebrities”","textChars":39,"textLines":1,"bbox":[68,340,525,82]}
+{"kind":"textbox","id":"sh/fmd0nil8","slide":1,"text":"TREMEMBÉ, SÃO PAULO, BRAZIL","textPreview":"TREMEMBÉ, SÃO PAULO, BRAZIL","textChars":27,"textLines":1,"bbox":[68,505,500,32]}
+{"kind":"textbox","id":"sh/kjq1872x","slide":1,"text":"Presented by: [student names]","textPreview":"Presented by: [student names]","textChars":29,"textLines":1,"bbox":[68,575,510,36]}
+{"kind":"textbox","id":"sh/lkz21cji","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[585,648,60,28]}
+{"kind":"image","id":"im/07qlk729","slide":1,"name":"","alt":"Exterior of Penitentiary II in Tremembé, São Paulo","bbox":[690,0,590,720]}
+{"kind":"notes","id":"nt/gg4yn2","slide":1,"text":"Tremembé is a municipality in the Paraíba Valley, in the interior of São Paulo state. Its prison complex became nationally known because several inmates were connected to high-profile criminal cases. This presentation looks beyond the nickname and explains the institution's history, routine and changing role.\n\nSources: CNN Brasil, Aug. 22, 2025: https://www.cnnbrasil.com.br/nacional/sudeste/sp/tremembe-entenda-de-onde-surgiu-fama-de-presidio-dos-famosos/"}
+{"kind":"slide","id":"sl/h07hzg","slide":2,"title":"TREMEMBÉ PRISON","textShapes":8}
+{"kind":"textbox","id":"sh/u1szato7","slide":2,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/h43ilo7i","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/g3uhcj6x","slide":2,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/36l0nypo","slide":2,"text":"Basic Facts","textPreview":"Basic Facts","textChars":11,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/25czeto3","slide":2,"text":"A COMPLEX, NOT A SINGLE BUILDING","textPreview":"A COMPLEX, NOT A SINGLE BUILDING","textChars":32,"textLines":1,"bbox":[62,183,620,30]}
+{"kind":"textbox","id":"sh/p83ip87u","slide":2,"text":"Five prison units in the complex\nFacilities for men and women\nClosed and semi-open regimes\nP2 opened on August 26, 1955","textPreview":"Five prison units in the complex | Facilities for men and women | Closed and semi-open regimes | P2 opened on August 26, 1955","textChars":119,"textLines":4,"bbox":[68,225,560,340]}
+{"kind":"shape","id":"sh/47uhg369","slide":2,"bbox":[715,190,495,390]}
+{"kind":"textbox","id":"sh/ral0rypk","slide":2,"text":"1955","textPreview":"1955","textChars":4,"textLines":1,"bbox":[765,225,390,85]}
+{"kind":"shape","id":"sh/q9czidoz","slide":2,"bbox":[765,326,390,0]}
+{"kind":"textbox","id":"sh/onqhs729","slide":2,"text":"Penitentiary II\nDr. José Augusto César Salgado","textPreview":"Penitentiary II | Dr. José Augusto César Salgado","textChars":46,"textLines":2,"bbox":[770,358,380,110]}
+{"kind":"textbox","id":"sh/9ozy1cju","slide":2,"text":"The unit commonly called P2","textPreview":"The unit commonly called P2","textChars":27,"textLines":1,"bbox":[785,505,350,34]}
+{"kind":"notes","id":"nt/h07hzg","slide":2,"text":"The name Tremembé Prison can refer to more than one institution. The best-known unit is Penitentiary II Dr. José Augusto César Salgado, commonly called P2. Other units in the complex have different populations and security functions. São Paulo's prison administration records P2's inauguration on August 26, 1955.\n\nSources: São Paulo State Prison Administration, prison units: https://www1.sap.sp.gov.br/sp/unidades-prisionais/unidades-prisionais-mobile-ceprvali.html | SAP, Inaugurated Units: https://www1.sap.sp.gov.br/sp/unidades-prisionais/impressao/pdf/inauguradas.pdf | CNN Brasil, Aug. 22, 2025"}
+{"kind":"slide","id":"sl/55u1i8","slide":3,"title":"TREMEMBÉ PRISON","textShapes":14}
+{"kind":"textbox","id":"sh/5kre10ve","slide":3,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/ih0v6lw3","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/ji9wzqdo","slide":3,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/wfyd4vex","slide":3,"text":"Why Did It Become Famous?","textPreview":"Why Did It Become Famous?","textChars":25,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/hg7ex0vi","slide":3,"text":"“PRISON OF CELEBRITIES”","textPreview":"“PRISON OF CELEBRITIES”","textChars":23,"textLines":1,"bbox":[62,190,1150,72]}
+{"kind":"shape","id":"sh/utgv2lwr","slide":3,"bbox":[62,280,1145,0]}
+{"kind":"textbox","id":"sh/vepwvqdc","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[68,320,56,42]}
+{"kind":"textbox","id":"sh/gb2xgfu1","slide":3,"text":"High-profile cases","textPreview":"High-profile cases","textChars":18,"textLines":1,"bbox":[150,317,315,45]}
+{"kind":"textbox","id":"sh/1cbe9kvm","slide":3,"text":"Several inmates appeared in major national news stories.","textPreview":"Several inmates appeared in major national news stories.","textChars":56,"textLines":1,"bbox":[480,320,690,63]}
+{"kind":"textbox","id":"sh/dsr69k7q","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[68,422,56,42]}
+{"kind":"textbox","id":"sh/sri50fq5","slide":3,"text":"Protection","textPreview":"Protection","textChars":10,"textLines":1,"bbox":[150,419,315,45]}
+{"kind":"textbox","id":"sh/rq9o7apk","slide":3,"text":"Authorities separated people who could face threats in ordinary prison populations.","textPreview":"Authorities separated people who could face threats in ordinary prison populations.","textChars":83,"textLines":1,"bbox":[480,422,690,63]}
+{"kind":"textbox","id":"sh/qp0nyp8f","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[68,524,56,42]}
+{"kind":"textbox","id":"sh/5or65kru","slide":3,"text":"Media attention","textPreview":"Media attention","textChars":15,"textLines":1,"bbox":[150,521,315,45]}
+{"kind":"textbox","id":"sh/4ni5wfq9","slide":3,"text":"The concentration of well-known names created a lasting public image.","textPreview":"The concentration of well-known names created a lasting public image.","textChars":69,"textLines":1,"bbox":[480,524,690,63]}
+{"kind":"textbox","id":"sh/3mpo3a9o","slide":3,"text":"The nickname came from the media. It did not mean a luxury prison.","textPreview":"The nickname came from the media. It did not mean a luxury prison.","textChars":66,"textLines":1,"bbox":[64,645,1120,34]}
+{"kind":"notes","id":"nt/55u1i8","slide":3,"text":"People involved in cases with major public attention could face threats in ordinary prison populations. Tremembé became associated with protective separation and therefore concentrated several well-known names. The media nickname did not mean a luxury prison, and most prisoners were never celebrities.\n\nSources: CNN Brasil, Aug. 22, 2025: https://www.cnnbrasil.com.br/nacional/sudeste/sp/tremembe-entenda-de-onde-surgiu-fama-de-presidio-dos-famosos/"}
+{"kind":"slide","id":"sl/ybamss","slide":4,"title":"TREMEMBÉ PRISON","textShapes":17}
+{"kind":"textbox","id":"sh/bel0z690","slide":4,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/czu18bql","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/x0321gr6","slide":4,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/y1cjal8r","slide":4,"text":"Who Was Imprisoned There?","textPreview":"Who Was Imprisoned There?","textChars":25,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/z2lk3q9c","slide":4,"text":"FORMER INMATES CONNECTED TO NATIONALLY KNOWN CASES","textPreview":"FORMER INMATES CONNECTED TO NATIONALLY KNOWN CASES","textChars":50,"textLines":1,"bbox":[62,177,1000,28]}
+{"kind":"textbox","id":"sh/k3u1cvqx","slide":4,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[70,235,70,42]}
+{"kind":"textbox","id":"sh/l43250ri","slide":4,"text":"Suzane von Richthofen","textPreview":"Suzane von Richthofen","textChars":21,"textLines":1,"bbox":[165,230,875,55]}
+{"kind":"textbox","id":"sh/m5wje58n","slide":4,"text":"FORMER INMATE","textPreview":"FORMER INMATE","textChars":13,"textLines":1,"bbox":[1040,242,165,28]}
+{"kind":"shape","id":"sh/765k7a98","slide":4,"bbox":[70,297,1135,0]}
+{"kind":"textbox","id":"sh/3it07idk","slide":4,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[70,337,70,42]}
+{"kind":"textbox","id":"sh/2hkzedcz","slide":4,"text":"Alexandre Nardoni","textPreview":"Alexandre Nardoni","textChars":17,"textLines":1,"bbox":[165,332,875,55]}
+{"kind":"textbox","id":"sh/pkbi9svq","slide":4,"text":"FORMER INMATE","textPreview":"FORMER INMATE","textChars":13,"textLines":1,"bbox":[1040,344,165,28]}
+{"kind":"shape","id":"sh/oj2hgnu5","slide":4,"bbox":[70,399,1135,0]}
+{"kind":"textbox","id":"sh/fetgjydo","slide":4,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[70,439,70,42]}
+{"kind":"textbox","id":"sh/edkzadc3","slide":4,"text":"Elize Matsunaga","textPreview":"Elize Matsunaga","textChars":15,"textLines":1,"bbox":[165,434,875,55]}
+{"kind":"textbox","id":"sh/1gby58ve","slide":4,"text":"FORMER INMATE","textPreview":"FORMER INMATE","textChars":13,"textLines":1,"bbox":[1040,446,165,28]}
+{"kind":"shape","id":"sh/gf2hc3u9","slide":4,"bbox":[70,501,1135,0]}
+{"kind":"textbox","id":"sh/zad0f2ts","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[70,541,70,42]}
+{"kind":"textbox","id":"sh/y94zmxc7","slide":4,"text":"Cristian Cravinhos","textPreview":"Cristian Cravinhos","textChars":18,"textLines":1,"bbox":[165,536,875,55]}
+{"kind":"textbox","id":"sh/a583e1wf","slide":4,"text":"FORMER INMATE","textPreview":"FORMER INMATE","textChars":13,"textLines":1,"bbox":[1040,548,165,28]}
+{"kind":"shape","id":"sh/v6hkn6d0","slide":4,"bbox":[70,603,1135,0]}
+{"kind":"textbox","id":"sh/w7qlgbel","slide":4,"text":"Each case received extensive media coverage in Brazil.","textPreview":"Each case received extensive media coverage in Brazil.","textChars":54,"textLines":1,"bbox":[70,646,1040,30]}
+{"kind":"notes","id":"nt/ybamss","slide":4,"text":"These people were convicted in different cases that received extensive coverage in Brazil. Suzane von Richthofen was convicted for her role in the murder of her parents. Alexandre Nardoni was convicted in the death of his daughter Isabella. Elize Matsunaga and Cristian Cravinhos were also convicted in widely reported homicide cases. Keep the explanation neutral and avoid graphic details.\n\nSources: CNN Brasil, Aug. 22, 2025 | CNN Brasil, Jan. 13, 2026: https://www.cnnbrasil.com.br/nacional/sudeste/sp/presidio-dos-famosos-comeca-a-ser-desfeito-e-presos-sao-transferidos/"}
+{"kind":"slide","id":"sl/dhgd5q","slide":5,"title":"TREMEMBÉ PRISON","textShapes":16}
+{"kind":"textbox","id":"sh/ps3u103q","slide":5,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/25sbq5kf","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/361czalk","slide":5,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/cvutwf2h","slide":5,"text":"Life Inside the Prison","textPreview":"Life Inside the Prison","textChars":22,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/dw3u5k32","slide":5,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[68,205,68,40]}
+{"kind":"textbox","id":"sh/qtcbu5kb","slide":5,"text":"SECURITY","textPreview":"SECURITY","textChars":8,"textLines":1,"bbox":[68,263,245,35]}
+{"kind":"shape","id":"sh/rulc3alw","slide":5,"bbox":[68,312,245,0]}
+{"kind":"textbox","id":"sh/szqtkb2x","slide":5,"text":"Strict rules and daily routines","textPreview":"Strict rules and daily routines","textChars":31,"textLines":1,"bbox":[68,340,245,135]}
+{"kind":"textbox","id":"sh/t0zatg3i","slide":5,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[363,205,68,40]}
+{"kind":"textbox","id":"sh/dg7yh47m","slide":5,"text":"WORK","textPreview":"WORK","textChars":4,"textLines":1,"bbox":[363,263,245,35]}
+{"kind":"shape","id":"sh/sfyh8z61","slide":5,"bbox":[363,312,245,0]}
+{"kind":"textbox","id":"sh/repgfupg","slide":5,"text":"Prison labor and vocational activities","textPreview":"Prison labor and vocational activities","textChars":38,"textLines":1,"bbox":[363,340,245,135]}
+{"kind":"textbox","id":"sh/qdwz6pov","slide":5,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[658,205,68,40]}
+{"kind":"textbox","id":"sh/147yl47i","slide":5,"text":"EDUCATION","textPreview":"EDUCATION","textChars":9,"textLines":1,"bbox":[658,263,245,35]}
+{"kind":"shape","id":"sh/03yhcj6x","slide":5,"bbox":[658,312,245,0]}
+{"kind":"textbox","id":"sh/f2pgjeps","slide":5,"text":"Classes, culture and religious programs","textPreview":"Classes, culture and religious programs","textChars":39,"textLines":1,"bbox":[658,340,245,135]}
+{"kind":"textbox","id":"sh/ehgza9o7","slide":5,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[953,205,68,40]}
+{"kind":"textbox","id":"sh/p8rypo7u","slide":5,"text":"GARDEN","textPreview":"GARDEN","textChars":6,"textLines":1,"bbox":[953,263,245,35]}
+{"kind":"shape","id":"sh/o7ihgj69","slide":5,"bbox":[953,312,245,0]}
+{"kind":"textbox","id":"sh/8na98rih","slide":5,"text":"Vegetable and herb production at P2","textPreview":"Vegetable and herb production at P2","textChars":35,"textLines":1,"bbox":[953,340,245,135]}
+{"kind":"shape","id":"sh/9oja1wz2","slide":5,"bbox":[66,535,1138,90]}
+{"kind":"textbox","id":"sh/ml8r6h0r","slide":5,"text":"Official reports describe an organic garden where incarcerated workers grew vegetables and herbs.","textPreview":"Official reports describe an organic garden where incarcerated workers grew vegetables and herbs.","textChars":97,"textLines":1,"bbox":[95,557,1080,48]}
+{"kind":"notes","id":"nt/dhgd5q","slide":5,"text":"Official and reported programs have included workshops, schooling, religious activities, music or theatre, and prison labor. A state government report described an organic garden at P2 where incarcerated workers grew vegetables and herbs. These activities can build skills and responsibility. Work and study may also contribute to sentence reduction under Brazilian law when legal requirements are met.\n\nSources: São Paulo State Prison Administration, prison gardens: https://www1.sap.sp.gov.br/noticias/not1932.html | CNN Brasil, Aug. 22, 2025"}
+{"kind":"slide","id":"sl/yk3cil","slide":6,"title":"TREMEMBÉ PRISON","textShapes":12}
+{"kind":"textbox","id":"sh/jqtczyx4","slide":6,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/krmts3yp","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/5svu18fa","slide":6,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/alkbmtgn","slide":6,"text":"A Famous Story","textPreview":"A Famous Story","textChars":14,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/vmtcvyx8","slide":6,"text":"SUZANE VON RICHTHOFEN","textPreview":"SUZANE VON RICHTHOFEN","textChars":21,"textLines":1,"bbox":[63,180,1020,60]}
+{"kind":"textbox","id":"sh/wn2to3yd","slide":6,"text":"Her case became one of Brazil's most discussed criminal cases.","textPreview":"Her case became one of Brazil's most discussed criminal cases.","textChars":62,"textLines":1,"bbox":[65,250,1000,40]}
+{"kind":"shape","id":"sh/xobuxofy","slide":6,"bbox":[90,420,1090,0]}
+{"kind":"shape","id":"sh/mh0bi9gb","slide":6,"bbox":[140,402,40,40]}
+{"kind":"textbox","id":"sh/ni9crexw","slide":6,"text":"2002","textPreview":"2002","textChars":4,"textLines":1,"bbox":[78,330,165,46]}
+{"kind":"textbox","id":"sh/76xwrid8","slide":6,"text":"The crime drew\nnational attention","textPreview":"The crime drew | national attention","textChars":33,"textLines":2,"bbox":[62,476,200,84]}
+{"kind":"shape","id":"sh/m5ofyxwn","slide":6,"bbox":[515,402,40,40]}
+{"kind":"textbox","id":"sh/98fetsve","slide":6,"text":"~20 YEARS","textPreview":"~20 YEARS","textChars":9,"textLines":1,"bbox":[453,330,165,46]}
+{"kind":"textbox","id":"sh/876x0net","slide":6,"text":"Sentence served largely\nin Tremembé","textPreview":"Sentence served largely | in Tremembé","textChars":35,"textLines":2,"bbox":[437,476,200,84]}
+{"kind":"shape","id":"sh/vaxwv2d4","slide":6,"bbox":[910,402,40,40]}
+{"kind":"textbox","id":"sh/u9of2xwj","slide":6,"text":"2023","textPreview":"2023","textChars":4,"textLines":1,"bbox":[848,330,165,46]}
+{"kind":"textbox","id":"sh/hczexcva","slide":6,"text":"Moved to the\nopen regime","textPreview":"Moved to the | open regime","textChars":24,"textLines":2,"bbox":[832,476,200,84]}
+{"kind":"textbox","id":"sh/wbqx47ep","slide":6,"text":"A legal and social case, not entertainment","textPreview":"A legal and social case, not entertainment","textChars":42,"textLines":1,"bbox":[65,640,1110,28]}
+{"kind":"notes","id":"nt/yk3cil","slide":6,"text":"The Richthofen case became one of Brazil's most discussed criminal cases. Suzane spent roughly twenty years in the women's unit at Tremembé. In January 2023, the justice system moved her to the open regime. Her story helped build the complex's media image, but we should discuss it as a legal and social case, not as entertainment.\n\nSources: CNN Brasil, Aug. 22, 2025: https://www.cnnbrasil.com.br/nacional/sudeste/sp/tremembe-entenda-de-onde-surgiu-fama-de-presidio-dos-famosos/"}
+{"kind":"slide","id":"sl/nychmb","slide":7,"title":"2026 UPDATE","textShapes":7}
+{"kind":"textbox","id":"sh/uhg3ihcz","slide":7,"text":"2026 UPDATE","textPreview":"2026 UPDATE","textChars":11,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/fipkbmtk","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/47ilobu1","slide":7,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/p8r2hgbm","slide":7,"text":"The Prison Today","textPreview":"The Prison Today","textChars":16,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/2503m1cv","slide":7,"text":"The complex\nremains active","textPreview":"The complex | remains active","textChars":26,"textLines":2,"bbox":[68,190,540,100]}
+{"kind":"textbox","id":"sh/369kf6tg","slide":7,"text":"Several high-profile inmates transferred\nThe special concentration began to end\nTremembé's public image still remains","textPreview":"Several high-profile inmates transferred | The special concentration began to end | Tremembé's public image still remains","textChars":117,"textLines":3,"bbox":[75,330,535,260]}
+{"kind":"shape","id":"sh/kbe1c7ux","slide":7,"bbox":[850,490,300,88]}
+{"kind":"textbox","id":"sh/5c725cbi","slide":7,"text":"ROLE CHANGING","textPreview":"ROLE CHANGING","textChars":13,"textLines":1,"bbox":[858,513,285,40]}
+{"kind":"textbox","id":"sh/lcnq5kje","slide":7,"text":"Reports in January 2026 described a new distribution policy for notable prisoners.","textPreview":"Reports in January 2026 described a new distribution policy for notable prisoners.","textChars":82,"textLines":1,"bbox":[70,630,1120,38]}
+{"kind":"image","id":"im/on6dsb6l","slide":7,"name":"","alt":"Exterior of Penitentiary II in Tremembé","bbox":[700,175,505,365]}
+{"kind":"notes","id":"nt/nychmb","slide":7,"text":"Reports published in January 2026 said São Paulo authorities were dispersing notable prisoners to other facilities. Tremembé continues to operate, but its role as a single destination for famous inmates is changing. This matters because many older articles describe a situation that is no longer fully current.\n\nSources: CNN Brasil, Jan. 13, 2026: https://www.cnnbrasil.com.br/nacional/sudeste/sp/presidio-dos-famosos-comeca-a-ser-desfeito-e-presos-sao-transferidos/ | São Paulo State Prison Administration, prison units"}
+{"kind":"slide","id":"sl/0j0zdn","slide":8,"title":"TREMEMBÉ PRISON","textShapes":11}
+{"kind":"textbox","id":"sh/svitwvu5","slide":8,"text":"TREMEMBÉ PRISON","textPreview":"TREMEMBÉ PRISON","textChars":15,"textLines":1,"bbox":[58,34,430,28]}
+{"kind":"textbox","id":"sh/7u9snqtk","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1150,27,72,42]}
+{"kind":"shape","id":"sh/6t0bulcz","slide":8,"bbox":[58,78,1164,0]}
+{"kind":"textbox","id":"sh/hkbut0bm","slide":8,"text":"Conclusion & Sources","textPreview":"Conclusion & Sources","textChars":20,"textLines":1,"bbox":[58,102,1100,62]}
+{"kind":"textbox","id":"sh/gj2t0vu1","slide":8,"text":"Tremembé became famous because security decisions brought several high-profile inmates to the same complex.","textPreview":"Tremembé became famous because security decisions brought several high-profile inmates to the same complex.","textChars":107,"textLines":1,"bbox":[66,180,1110,83]}
+{"kind":"shape","id":"sh/fi9crqtg","slide":8,"bbox":[66,282,1138,0]}
+{"kind":"textbox","id":"sh/uh0bylcv","slide":8,"text":"Its history connects three public debates:","textPreview":"Its history connects three public debates:","textChars":42,"textLines":1,"bbox":[66,310,620,38]}
+{"kind":"textbox","id":"sh/xo7axwbi","slide":8,"text":"PRISON SECURITY","textPreview":"PRISON SECURITY","textChars":15,"textLines":1,"bbox":[70,370,340,40]}
+{"kind":"textbox","id":"sh/wnytorux","slide":8,"text":"MEDIA ATTENTION","textPreview":"MEDIA ATTENTION","textChars":15,"textLines":1,"bbox":[470,370,340,40]}
+{"kind":"textbox","id":"sh/exgf2twf","slide":8,"text":"REHABILITATION","textPreview":"REHABILITATION","textChars":14,"textLines":1,"bbox":[875,370,330,40]}
+{"kind":"textbox","id":"sh/fypgvyd0","slide":8,"text":"Sources","textPreview":"Sources","textChars":7,"textLines":1,"bbox":[68,465,170,32]}
+{"kind":"textbox","id":"sh/0zyx43el","slide":8,"text":"São Paulo State Prison Administration (SAP): prison units, inauguration list and prison garden report\nCNN Brasil: Tremembé and the origin of its nickname, Aug. 22, 2025\nCNN Brasil: transfers and the end of the special wing, Jan. 13, 2026","textPreview":"São Paulo State Prison Administration (SAP): prison units, inauguration list and prison garden report | CNN Brasil: Tremembé and the orig...","textChars":237,"textLines":3,"bbox":[68,510,1125,125]}
+{"kind":"textbox","id":"sh/107yx8vq","slide":8,"text":"Thank you","textPreview":"Thank you","textChars":9,"textLines":1,"bbox":[1010,654,180,28]}
+{"kind":"notes","id":"nt/0j0zdn","slide":8,"text":"End by separating the media reputation from the institution's real functions. Tremembé matters because it shows how prison security, public attention and rehabilitation can intersect. Its role changed in 2026, but its history still influences public discussion about Brazil's prison system.\n\nSources: SAP prison units: https://www1.sap.sp.gov.br/sp/unidades-prisionais/unidades-prisionais-mobile-ceprvali.html | SAP inauguration list: https://www1.sap.sp.gov.br/sp/unidades-prisionais/impressao/pdf/inauguradas.pdf | SAP garden report: https://www1.sap.sp.gov.br/noticias/not1932.html | CNN Brasil, Aug. 22, 2025 | CNN Brasil, Jan. 13, 2026"}

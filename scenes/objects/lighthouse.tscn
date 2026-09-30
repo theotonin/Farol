@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/lighthouse.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lighthouse"]
+atlas = ExtResource("2_objects")
+region = Rect2(0, 160, 64, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_body"]
+size = Vector2(126, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape_interaction"]
+radius = 92.0
+
+[node name="Lighthouse" type="StaticBody2D" groups=["shelter", "structures"]]
+collision_layer = 1
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_lighthouse")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 105)
+shape = SubResource("RectangleShape_body")
+
+[node name="Interaction" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Interaction"]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape_interaction")

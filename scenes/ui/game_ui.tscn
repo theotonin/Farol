@@ -1,0 +1,1014 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ui"]
+[ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
+[ext_resource type="Texture2D" path="res://assets/pixel/characters.png" id="3_characters"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button"]
+bg_color = Color(0.156863, 0.262745, 0.290196, 1)
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.403922, 0.435294, 0.356863, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
+bg_color = Color(0.937255, 0.741176, 0.439216, 1)
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.843137, 0.584314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_pressed"]
+bg_color = Color(0.831373, 0.639216, 0.384314, 1)
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.843137, 0.584314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_disabled"]
+bg_color = Color(0.113725, 0.2, 0.231373, 1)
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227451, 0.32549, 0.337255, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.929412, 0.941176, 0.862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_hud_frame"]
+bg_color = Color(0.0470588, 0.117647, 0.141176, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.403922, 0.435294, 0.356863, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_hud_slot"]
+bg_color = Color(0.0784314, 0.164706, 0.184314, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.262745, 0.360784, 0.341176, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="AtlasTexture" id="Atlas_portrait"]
+atlas = ExtResource("3_characters")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_wood"]
+atlas = ExtResource("2_objects")
+region = Rect2(0, 8, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_stone"]
+atlas = ExtResource("2_objects")
+region = Rect2(32, 8, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_food"]
+atlas = ExtResource("2_objects")
+region = Rect2(64, 8, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_scrap"]
+atlas = ExtResource("2_objects")
+region = Rect2(96, 8, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_part"]
+atlas = ExtResource("2_objects")
+region = Rect2(128, 8, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_frame"]
+bg_color = Color(0.0352941, 0.0901961, 0.113725, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.65098, 0.545098, 0.34902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+bg_color = Color(0.0901961, 0.172549, 0.203922, 0.97)
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.403922, 0.435294, 0.356863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_bar_background"]
+bg_color = Color(0.12549, 0.215686, 0.239216, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_life_fill"]
+bg_color = Color(0.858824, 0.54902, 0.470588, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_energy_fill"]
+bg_color = Color(0.533333, 0.768627, 0.690196, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_game"]
+default_font_size = 18
+Button/colors/font_color = Color(0.929412, 0.941176, 0.862745, 1)
+Button/colors/font_disabled_color = Color(0.45098, 0.552941, 0.568627, 1)
+Button/colors/font_hover_color = Color(0.0627451, 0.121569, 0.152941, 1)
+Button/colors/font_pressed_color = Color(0.0627451, 0.121569, 0.152941, 1)
+Button/styles/disabled = SubResource("StyleBox_button_disabled")
+Button/styles/focus = SubResource("StyleBox_focus")
+Button/styles/hover = SubResource("StyleBox_button_hover")
+Button/styles/normal = SubResource("StyleBox_button")
+Button/styles/pressed = SubResource("StyleBox_button_pressed")
+Label/colors/font_color = Color(0.929412, 0.941176, 0.862745, 1)
+PanelContainer/styles/panel = SubResource("StyleBox_panel")
+
+[node name="GameUI" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_ui")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_game")
+
+[node name="HUD" type="Control" parent="Root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UnifiedBar" type="Panel" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -146.0
+offset_right = -48.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="ObjectiveBackdrop" type="Panel" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 320.0
+offset_top = 14.0
+offset_right = -320.0
+offset_bottom = 68.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="PromptBackdrop" type="Panel" parent="Root/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -210.0
+offset_right = 330.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="ToastBackdrop" type="Panel" parent="Root/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 255.0
+offset_top = 68.0
+offset_right = -255.0
+offset_bottom = 142.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="Status" type="VBoxContainer" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -130.0
+offset_right = 374.0
+offset_bottom = -44.0
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="LifeLabel" type="Label" parent="Root/HUD/Status"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "VIDA  100"
+
+[node name="Life" type="ProgressBar" parent="Root/HUD/Status"]
+custom_minimum_size = Vector2(220, 9)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBox_bar_background")
+theme_override_styles/fill = SubResource("StyleBox_life_fill")
+value = 100.0
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="Root/HUD/Status"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "ENERGIA  100"
+
+[node name="Energy" type="ProgressBar" parent="Root/HUD/Status"]
+custom_minimum_size = Vector2(220, 9)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBox_bar_background")
+theme_override_styles/fill = SubResource("StyleBox_energy_fill")
+value = 100.0
+show_percentage = false
+
+[node name="PortraitFrame" type="Panel" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -130.0
+offset_right = 138.0
+offset_bottom = -48.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Portrait" type="TextureRect" parent="Root/HUD"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = -126.0
+offset_right = 133.0
+offset_bottom = -62.0
+grow_vertical = 0
+mouse_filter = 2
+texture = SubResource("Atlas_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Clock" type="VBoxContainer" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -132.0
+offset_right = -72.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ClockLabel" type="Label" parent="Root/HUD/Clock"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "DIA 1"
+horizontal_alignment = 2
+
+[node name="PhaseLabel" type="Label" parent="Root/HUD/Clock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "Anoitece em 04:00"
+horizontal_alignment = 2
+
+[node name="DirectionLabel" type="Label" parent="Root/HUD/Clock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "Farol · 0 m"
+horizontal_alignment = 2
+
+[node name="DirectionArrow" type="Label" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -93.0
+offset_right = -338.0
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(16, 16)
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objective" type="Label" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 340.0
+offset_top = 25.0
+offset_right = -340.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+
+[node name="Toast" type="Label" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 265.0
+offset_top = 72.0
+offset_right = -265.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Inventory" type="VBoxContainer" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -139.0
+offset_right = 230.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BagLabel" type="Label" parent="Root/HUD/Inventory"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+text = "MOCHILA  0 / 20"
+horizontal_alignment = 1
+
+[node name="BagItems" type="Label" parent="Root/HUD/Inventory"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 15
+
+[node name="ResourceStrip" type="Control" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -112.0
+offset_right = 230.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Wood" type="Panel" parent="Root/HUD/ResourceStrip"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 67.0
+tooltip_text = "Madeira"
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Wood"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = SubResource("Atlas_wood")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Wood"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Stone" type="Panel" parent="Root/HUD/ResourceStrip"]
+layout_mode = 0
+offset_left = 94.0
+offset_right = 178.0
+offset_bottom = 67.0
+tooltip_text = "Pedra"
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Stone"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = SubResource("Atlas_stone")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Stone"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Scrap" type="Panel" parent="Root/HUD/ResourceStrip"]
+layout_mode = 0
+offset_left = 188.0
+offset_right = 272.0
+offset_bottom = 67.0
+tooltip_text = "Sucata"
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Scrap"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = SubResource("Atlas_scrap")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Scrap"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Part" type="Panel" parent="Root/HUD/ResourceStrip"]
+layout_mode = 0
+offset_left = 282.0
+offset_right = 366.0
+offset_bottom = 67.0
+tooltip_text = "Peças do farol"
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Part"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = SubResource("Atlas_part")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Part"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Food" type="Panel" parent="Root/HUD/ResourceStrip"]
+layout_mode = 0
+offset_left = 376.0
+offset_right = 460.0
+offset_bottom = 67.0
+tooltip_text = "Comida"
+theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Food"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = SubResource("Atlas_food")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Food"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Controls" type="Label" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -43.0
+offset_right = 1210.0
+offset_bottom = -22.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "WASD mover  ·  Shift correr  ·  E interagir  ·  Clique atacar  ·  Q comer  ·  Esc pausa"
+horizontal_alignment = 1
+
+[node name="Prompt" type="Label" parent="Root/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -198.0
+offset_right = 315.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+
+[node name="Shelter" type="PanelContainer" parent="Root"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -470.0
+offset_top = 120.0
+offset_right = -30.0
+offset_bottom = 690.0
+grow_horizontal = 0
+mouse_filter = 0
+
+[node name="Scroll" type="ScrollContainer" parent="Root/Shelter"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+follow_focus = true
+
+[node name="Column" type="VBoxContainer" parent="Root/Shelter/Scroll"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Heading" type="HBoxContainer" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Root/Shelter/Scroll/Column/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Abrigo do farol"
+
+[node name="Close" type="Button" parent="Root/Shelter/Scroll/Column/Heading"]
+custom_minimum_size = Vector2(92, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fechar"
+
+[node name="Warning" type="Label" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_font_sizes/font_size = 14
+text = "O tempo continua. Volte antes de escurecer."
+
+[node name="InventoryHeading" type="Label" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 13
+text = "DEPÓSITO                         GUARDADO / MOCHILA"
+
+[node name="Stock" type="VBoxContainer" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Wood" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Wood"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Madeira    0 / 0"
+
+[node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Wood"]
+custom_minimum_size = Vector2(108, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+text = "Retirar 1"
+
+[node name="Stone" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Stone"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Pedra    0 / 0"
+
+[node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Stone"]
+custom_minimum_size = Vector2(108, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+text = "Retirar 1"
+
+[node name="Scrap" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Scrap"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Sucata    0 / 0"
+
+[node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Scrap"]
+custom_minimum_size = Vector2(108, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+text = "Retirar 1"
+
+[node name="Part" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Part"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Peças    0 / 0"
+
+[node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Part"]
+custom_minimum_size = Vector2(108, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+text = "Retirar 1"
+
+[node name="Food" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Food"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Comida    0 / 0"
+
+[node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Food"]
+custom_minimum_size = Vector2(108, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+text = "Retirar 1"
+
+[node name="Deposit" type="Button" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Guardar toda a mochila"
+
+[node name="FireLabel" type="Label" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 16
+text = "Fogueira · 0s de proteção noturna"
+
+[node name="Fuel" type="Button" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Abastecer fogueira · 1 madeira / 30s"
+
+[node name="RepairLabel" type="Label" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(400, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_font_sizes/font_size = 15
+text = "Reforçar a estrutura"
+autowrap_mode = 2
+
+[node name="Repair" type="Button" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Concluir reparo"
+
+[node name="Ignite" type="Button" parent="Root/Shelter/Scroll/Column"]
+visible = false
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Acender o farol e chamar resgate"
+
+[node name="Modal" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Shade" type="ColorRect" parent="Root/Modal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.025, 0.065, 0.085, 0.89)
+
+[node name="MenuFrame" type="Panel" parent="Root/Modal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -310.0
+offset_right = 370.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_menu_frame")
+
+[node name="Content" type="VBoxContainer" parent="Root/Modal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -270.0
+offset_right = 320.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Root/Modal/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 62
+text = "O Farol"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Root/Modal/Content"]
+custom_minimum_size = Vector2(600, 58)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_font_sizes/font_size = 20
+text = "A ilha guarda o passado.\nUma luz pode devolver seu futuro."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Body" type="Label" parent="Root/Modal/Content"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Root/Modal/Content"]
+custom_minimum_size = Vector2(490, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Continue" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Continuar expedição"
+
+[node name="New" type="Button" parent="Root/Modal/Content/Buttons"]
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Nova expedição"
+
+[node name="ConfirmNew" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Começar nova expedição"
+
+[node name="CancelNew" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Manter meu progresso"
+
+[node name="Begin" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Chegar à ilha"
+
+[node name="Resume" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Voltar à ilha"
+
+[node name="Mute" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Som: ligado"
+
+[node name="Menu" type="Button" parent="Root/Modal/Content/Buttons"]
+visible = false
+custom_minimum_size = Vector2(490, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Voltar ao menu"
+
+[node name="Footer" type="Label" parent="Root/Modal/Content"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Caption" type="Label" parent="Root/Modal"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -54.0
+offset_right = 300.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 16
+text = "Um protótipo de sobrevivência"
+horizontal_alignment = 1

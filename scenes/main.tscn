@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dc3o5qs15fuum"]
+
+[ext_resource type="Script" uid="uid://ktgby4njs6w8" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/world/island.tscn" id="2_island"]
+[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_ui.tscn" id="4_ui"]
+[ext_resource type="Script" uid="uid://ffw8dm3s5hoy" path="res://scripts/soundscape.gd" id="5_sound"]
+[ext_resource type="PackedScene" path="res://scenes/effects/burst_effects.tscn" id="6_effects"]
+
+[node name="OFarol" type="Node2D" unique_id=1601824565]
+script = ExtResource("1_game")
+
+[node name="World" type="Node2D" parent="." unique_id=1061732517]
+y_sort_enabled = true
+
+[node name="Island" parent="World" unique_id=237285751 instance=ExtResource("2_island")]
+
+[node name="Enemies" type="Node2D" parent="World" unique_id=178869492]
+y_sort_enabled = true
+
+[node name="Player" parent="World" unique_id=484634302 instance=ExtResource("3_player")]
+position = Vector2(0, 180)
+
+[node name="Effects" parent="World" unique_id=744360630 instance=ExtResource("6_effects")]
+z_index = 4
+
+[node name="RescueVisuals" type="Node2D" parent="World" unique_id=872591834]
+visible = false
+z_index = 3
+
+[node name="Beam" type="Polygon2D" parent="World/RescueVisuals" unique_id=1623691013]
+position = Vector2(0, -90)
+color = Color(1, 0.87, 0.52, 0.2)
+polygon = PackedVector2Array(0, 0, 1700, -220, 1700, 220)
+
+[node name="Boat" type="Node2D" parent="World/RescueVisuals" unique_id=1239537063]
+position = Vector2(1670, -260)
+
+[node name="Hull" type="Polygon2D" parent="World/RescueVisuals/Boat" unique_id=2131101678]
+color = Color(0.843137, 0.784314, 0.627451, 1)
+polygon = PackedVector2Array(-36, -12, 35, -12, 20, 15, -25, 15)
+
+[node name="Cabin" type="Polygon2D" parent="World/RescueVisuals/Boat" unique_id=1543372142]
+color = Color(0.25098, 0.403922, 0.45098, 1)
+polygon = PackedVector2Array(-13, -26, 17, -26, 17, -6, -13, -6)
+
+[node name="Lamp" type="PointLight2D" parent="World/RescueVisuals/Boat" unique_id=1853162861]
+position = Vector2(18, -21)
+energy = 0.0
+
+[node name="Lighting" type="CanvasModulate" parent="." unique_id=1610340721]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=873003817 groups=["player"]]
+position = Vector2(0, 180)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+position_smoothing_enabled = true
+
+[node name="UI" parent="." unique_id=748369074 instance=ExtResource("4_ui")]
+
+[node name="Soundscape" type="Node" parent="." unique_id=313933411]
+script = ExtResource("5_sound")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="1_objects"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_storage"]
+atlas = ExtResource("1_objects")
+region = Rect2(224, 8, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_body"]
+size = Vector2(27, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape_interaction"]
+radius = 62.0
+
+[node name="Storage" type="StaticBody2D" groups=["shelter", "structures"]]
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_storage")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape_body")
+
+[node name="Interaction" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Interaction"]
+shape = SubResource("CircleShape_interaction")

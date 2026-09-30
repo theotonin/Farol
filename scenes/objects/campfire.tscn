@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/campfire.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_campfire"]
+atlas = ExtResource("2_objects")
+region = Rect2(4, 48, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape_interaction"]
+radius = 62.0
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture_light"]
+gradient = SubResource("Gradient_light")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Campfire" type="Area2D" groups=["shelter", "structures"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_campfire")
+
+[node name="InteractionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape_interaction")
+
+[node name="Light" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = SubResource("GradientTexture_light")
+texture_scale = 2.2
+color = Color(1, 0.72, 0.36, 1)
+energy = 0.0
+shadow_enabled = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resource_pickup.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
+[ext_resource type="Shader" path="res://resources/pickup_outline.gdshader" id="3_outline"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wood"]
+atlas = ExtResource("2_objects")
+region = Rect2(0, 8, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape_detection"]
+radius = 17.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
+resource_local_to_scene = true
+shader = ExtResource("3_outline")
+
+[node name="ResourcePickup" type="Area2D" groups=["resources"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Outline" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_outline")
+texture = SubResource("AtlasTexture_wood")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wood")
+
+[node name="DetectionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape_detection")
