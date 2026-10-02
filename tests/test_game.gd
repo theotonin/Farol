@@ -86,6 +86,7 @@ func run() -> void:
 	await physics_frame
 	game.interact()
 	check(game.state.bag_count() > 0, "Interação deve coletar recurso próximo.")
+	check(game.ui.pickup_notice.visible, "Coleta real deve mostrar o aviso compacto junto da mochila")
 	game.player.global_position = IslandWorld.SPAWN
 	game.handle_action("deposit", "")
 	check(game.state.bag_count() == 0, "Depósito deve retirar os itens da mochila.")

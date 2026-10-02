@@ -132,7 +132,7 @@ func begin_play() -> void:
 	spawn_enemies(state.is_night())
 	save_checkpoint()
 	if last_save_ok:
-		ui.toast("Colete materiais com E. No farol, guarde e abasteça a fogueira.", 7.0)
+		ui.toast("Colete com E. Guarde materiais e abasteça a fogueira.", 7.0)
 
 
 func continue_game() -> void:
@@ -242,6 +242,7 @@ func update_player(_delta: float) -> void:
 	facing = player.facing
 	walking = player.walking
 	exhausted = player.exhausted
+	sound.update_steps(_delta, player.walking and player.get_real_velocity().length() > 5.0, player.velocity.length() > Player.WALK_SPEED + 10.0)
 
 
 func player_is_safe() -> bool:
@@ -323,7 +324,7 @@ func attack() -> void:
 	if mode != "playing" or attack_cooldown > 0.0:
 		return
 	attack_cooldown = 0.45
-	sound.play_cue("hit")
+	sound.play_cue("swing")
 	var attack_shape := player.attack_area.get_node("Shape") as CollisionShape2D
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = attack_shape.shape
@@ -339,6 +340,7 @@ func attack() -> void:
 		hit_enemies[body] = true
 		var enemy := body as Enemy
 		var hit_position := enemy.global_position
+		sound.play_cue("hit")
 		enemy.receive_attack(35.0, player.facing * 36.0)
 		if is_instance_valid(enemy) and enemy.health > 0.0:
 			burst(hit_position, Color("c4b29b"), 8)
@@ -367,7 +369,7 @@ func _on_resource_collection_requested(pickup: Node) -> void:
 	if state.collect(kind, resource_id):
 		burst((pickup as Node2D).global_position, Color("efbd70"), 6)
 		sound.play_cue("collect")
-		ui.toast("+1 %s" % GameUI.NAMES[kind], 1.7)
+		ui.show_pickup(kind)
 		update_view()
 	else:
 		ui.toast("Mochila cheia. Guarde materiais no depósito do farol.", 3.0)
@@ -384,6 +386,8 @@ func handle_action(action_name: String, payload: String) -> void:
 	if action_name in ["deposit", "withdraw", "fuel", "repair", "ignite"]:
 		if mode != "playing" or player_position.length() > SHELTER_REACH:
 			return
+	if action_name != "mute":
+		sound.play_cue("click")
 	match action_name:
 		"new":
 			if FileAccess.file_exists(save_path):
@@ -444,6 +448,7 @@ func handle_action(action_name: String, payload: String) -> void:
 
 
 func update_view() -> void:
+	sound.update_soundscape(mode, state.is_night(), player_position.distance_to(island.get_node("Structures/Campfire").global_position), state.fuel > 0.0)
 	var night_amount: float = smoothstep(190.0, 245.0, state.time_of_day)
 	if state.time_of_day > 335.0:
 		night_amount *= 1.0 - smoothstep(335.0, 360.0, state.time_of_day)
@@ -457,7 +462,7 @@ func update_view() -> void:
 			var kind := String(target.get("kind"))
 			interaction = "E  ·  Coletar %s" % GameUI.NAMES.get(kind, kind).to_lower()
 		elif target != null and target.is_in_group("structures"):
-			interaction = "E  ·  Abrir abrigo, depósito e reparos" if player_position.length() <= SHELTER_REACH else "E  ·  Examinar ruínas"
+			interaction = "E  ·  Abrir abrigo" if player_position.length() <= SHELTER_REACH else "E  ·  Examinar ruínas"
 	ui.update_hud(state, player_position.length(), interaction, player_is_safe())
 	ui.set_lighthouse_direction(-player_position)
 

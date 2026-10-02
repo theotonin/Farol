@@ -7,13 +7,39 @@ var muted := false
 var _players: Array[AudioStreamPlayer] = []
 var _streams: Dictionary = {}
 var _next_player := 0
+var music_theme := ""
+var _music: Array[AudioStreamPlayer] = []
+var _active_music := 0
+var _fade: Tween
+var _ocean: AudioStreamPlayer
+var _campfire: AudioStreamPlayer
+var _fire_volume := -80.0
+var _step_timer := 0.0
 
 
 func _ready() -> void:
 	_ensure_audio_pool()
+	if DisplayServer.get_name() != "headless":
+		for index in 2:
+			var player := AudioStreamPlayer.new()
+			player.name = "Music%d" % index
+			player.volume_db = -80.0
+			add_child(player)
+			_music.append(player)
+		_ocean = _ambient_player("ocean", -24.0)
+		_campfire = _ambient_player("campfire", -80.0)
 
 
 func _exit_tree() -> void:
+	if _fade != null:
+		_fade.kill()
+	for player: AudioStreamPlayer in _music:
+		player.stop()
+		player.stream = null
+	for player in [_ocean, _campfire]:
+		if is_instance_valid(player):
+			player.stop()
+			player.stream = null
 	for player: AudioStreamPlayer in _players:
 		player.stop()
 		player.stream = null
@@ -22,11 +48,77 @@ func _exit_tree() -> void:
 
 func set_muted(value: bool) -> void:
 	muted = value
+	for player: AudioStreamPlayer in _music:
+		player.stream_paused = muted
+	if is_instance_valid(_ocean):
+		_ocean.stream_paused = muted
+		_campfire.stream_paused = muted
 	if muted:
 		for player: AudioStreamPlayer in _players:
 			player.stop()
 			player.stream = null
 		_streams.clear()
+
+
+func update_soundscape(mode: String, night: bool, fire_distance: float, fire_lit: bool) -> void:
+	var theme := "day"
+	if mode in ["rescue", "victory"]:
+		theme = "rescue"
+	elif mode in ["playing", "paused", "intro"] and night:
+		theme = "night"
+	if theme != music_theme:
+		music_theme = theme
+		if not _music.is_empty():
+			_crossfade(theme)
+	_fire_volume = lerpf(-18.0, -80.0, clampf(fire_distance / 320.0, 0.0, 1.0)) if fire_lit and mode == "playing" else -80.0
+	if is_instance_valid(_campfire):
+		_campfire.volume_db = _fire_volume
+
+
+func update_steps(delta: float, moving: bool, running: bool) -> void:
+	if not moving:
+		_step_timer = 0.0
+		return
+	_step_timer -= delta
+	if _step_timer <= 0.0:
+		play_cue("step")
+		_step_timer = 0.25 if running else 0.39
+
+
+func _loop_stream(kind: String) -> AudioStreamWAV:
+	var stream := load("res://assets/audio/%s.wav" % kind).duplicate() as AudioStreamWAV
+	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	stream.loop_begin = 0
+	# Imported WAVs may use QOA compression; byte counts are not PCM frames.
+	stream.loop_end = roundi(stream.get_length() * stream.mix_rate)
+	return stream
+
+
+func _ambient_player(kind: String, volume: float) -> AudioStreamPlayer:
+	var player := AudioStreamPlayer.new()
+	player.name = kind.capitalize()
+	player.stream = _loop_stream(kind)
+	player.volume_db = volume
+	add_child(player)
+	player.play()
+	return player
+
+
+func _crossfade(theme: String) -> void:
+	if _fade != null:
+		_fade.kill()
+	var previous := _music[_active_music]
+	_active_music = 1 - _active_music
+	var current := _music[_active_music]
+	current.stop()
+	current.stream = _loop_stream(theme)
+	current.volume_db = -60.0
+	current.play()
+	current.stream_paused = muted
+	_fade = create_tween().set_parallel(true)
+	_fade.tween_property(previous, "volume_db", -60.0, 2.5)
+	_fade.tween_property(current, "volume_db", -12.0, 2.5)
+	_fade.chain().tween_callback(previous.stop)
 
 
 func play_cue(kind: String) -> void:
@@ -42,6 +134,8 @@ func play_cue(kind: String) -> void:
 		_streams[kind] = stream
 	var player := _find_player()
 	player.stream = _streams[kind]
+	player.volume_db = -21.0 if kind == "step" else -10.0 if kind == "swing" else -6.0
+	player.pitch_scale = randf_range(0.90, 1.10) if kind == "step" else 1.0
 	player.play()
 
 
@@ -73,6 +167,10 @@ func _synthesize(kind: String) -> AudioStreamWAV:
 	var noise := 0.0
 	var pulse_rate := 0.0
 	match kind:
+		"step":
+			frequency = 95.0; end_frequency = 52.0; duration = 0.09; harmonic = 0.05; noise = 0.82
+		"swing":
+			frequency = 340.0; end_frequency = 95.0; duration = 0.18; harmonic = 0.10; noise = 0.75
 		"collect":
 			frequency = 520.0; end_frequency = 820.0; duration = 0.13; harmonic = 0.20
 		"hit":

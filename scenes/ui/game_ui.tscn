@@ -1,8 +1,14 @@
-[gd_scene load_steps=22 format=3]
+[gd_scene load_steps=28 format=3]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ui"]
 [ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
 [ext_resource type="Texture2D" path="res://assets/pixel/characters.png" id="3_characters"]
+
+[ext_resource type="FontFile" path="res://assets/ui/faroleiro.fnt" id="4_font"]
+[ext_resource type="Texture2D" path="res://assets/ui/frame.svg" id="5_frame"]
+[ext_resource type="Script" path="res://scripts/hud_identity.gd" id="6_identity"]
+[ext_resource type="Script" path="res://scripts/hud_bar_segments.gd" id="7_segments"]
+[ext_resource type="Script" path="res://scripts/hud_compass.gd" id="8_compass"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_button"]
 bg_color = Color(0.156863, 0.262745, 0.290196, 1)
@@ -80,17 +86,17 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_hud_frame"]
-bg_color = Color(0.0470588, 0.117647, 0.141176, 0.94)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.403922, 0.435294, 0.356863, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBox_hud_frame"]
+texture = ExtResource("5_frame")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="Theme_hud"]
+default_font = ExtResource("4_font")
+default_font_size = 16
+Label/colors/font_color = Color(0.929412, 0.941176, 0.862745, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_hud_slot"]
 bg_color = Color(0.0784314, 0.164706, 0.184314, 0.92)
@@ -99,10 +105,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.262745, 0.360784, 0.341176, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
 
 [sub_resource type="AtlasTexture" id="Atlas_portrait"]
 atlas = ExtResource("3_characters")
@@ -158,24 +164,24 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_bar_background"]
 bg_color = Color(0.12549, 0.215686, 0.239216, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_life_fill"]
 bg_color = Color(0.858824, 0.54902, 0.470588, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_energy_fill"]
 bg_color = Color(0.533333, 0.768627, 0.690196, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
 
 [sub_resource type="Theme" id="Theme_game"]
 default_font_size = 18
@@ -213,47 +219,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_hud")
+texture_filter = 1
 
 [node name="UnifiedBar" type="Panel" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 12
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 48.0
-offset_top = -146.0
-offset_right = -48.0
-offset_bottom = -18.0
+anchor_right = 0.5
+anchor_bottom = 1
+offset_left = -202
+offset_top = -100
+offset_right = 202
+offset_bottom = -16
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+anchor_left = 0.5
+anchor_top = 1
 
 [node name="ObjectiveBackdrop" type="Panel" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 10
-anchor_right = 1.0
-offset_left = 320.0
-offset_top = 14.0
-offset_right = -320.0
-offset_bottom = 68.0
+anchor_right = 0.5
+offset_left = -218
+offset_top = 16
+offset_right = 218
+offset_bottom = 100
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+anchor_left = 0.5
+anchor_top = 0
+anchor_bottom = 0
+grow_vertical = 2
 
 [node name="PromptBackdrop" type="Panel" parent="Root/HUD"]
 visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 1
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -330.0
-offset_top = -210.0
-offset_right = 330.0
-offset_bottom = -158.0
+anchor_bottom = 1
+offset_left = -320
+offset_top = -150
+offset_right = 320
+offset_bottom = -110
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 
@@ -261,37 +275,66 @@ theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 visible = false
 layout_mode = 1
 anchors_preset = 10
-anchor_right = 1.0
-offset_left = 255.0
-offset_top = 68.0
-offset_right = -255.0
-offset_bottom = 142.0
+anchor_right = 0.5
+offset_left = -360
+offset_top = 136
+offset_right = 360
+offset_bottom = 204
 grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+anchor_left = 0.5
+anchor_top = 0
+anchor_bottom = 0
+grow_vertical = 2
+
+[node name="StatusBackdrop" type="Panel" parent="Root/HUD"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 124.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="ClockBackdrop" type="Panel" parent="Root/HUD"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 124.0
+grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 
 [node name="Status" type="VBoxContainer" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = -130.0
-offset_right = 374.0
-offset_bottom = -44.0
-grow_vertical = 0
-theme_override_constants/separation = 5
+anchor_top = 0
+anchor_bottom = 0
+offset_left = 104
+offset_top = 28
+offset_right = 282
+offset_bottom = 110
+grow_vertical = 2
+theme_override_constants/separation = 2
+anchor_left = 0
+anchor_right = 0
+grow_horizontal = 2
+mouse_filter = 2
 
 [node name="LifeLabel" type="Label" parent="Root/HUD/Status"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 16
 text = "VIDA  100"
 
 [node name="Life" type="ProgressBar" parent="Root/HUD/Status"]
-custom_minimum_size = Vector2(220, 9)
+custom_minimum_size = Vector2(172, 8)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBox_bar_background")
 theme_override_styles/fill = SubResource("StyleBox_life_fill")
@@ -302,13 +345,13 @@ show_percentage = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 14
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 text = "ENERGIA  100"
 
 [node name="Energy" type="ProgressBar" parent="Root/HUD/Status"]
-custom_minimum_size = Vector2(220, 9)
+custom_minimum_size = Vector2(172, 8)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBox_bar_background")
 theme_override_styles/fill = SubResource("StyleBox_energy_fill")
@@ -318,52 +361,59 @@ show_percentage = false
 [node name="PortraitFrame" type="Panel" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = -130.0
-offset_right = 138.0
-offset_bottom = -48.0
-grow_vertical = 0
+anchor_top = 0
+anchor_bottom = 0
+offset_left = 28
+offset_top = 28
+offset_right = 92
+offset_bottom = 108
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+anchor_left = 0
+anchor_right = 0
+grow_horizontal = 2
 
 [node name="Portrait" type="TextureRect" parent="Root/HUD"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 69.0
-offset_top = -126.0
-offset_right = 133.0
-offset_bottom = -62.0
-grow_vertical = 0
+anchor_top = 0
+anchor_bottom = 0
+offset_left = 28
+offset_top = 34
+offset_right = 92
+offset_bottom = 98
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("Atlas_portrait")
 expand_mode = 1
 stretch_mode = 5
+anchor_left = 0
+anchor_right = 0
+grow_horizontal = 2
 
 [node name="Clock" type="VBoxContainer" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -328.0
-offset_top = -132.0
-offset_right = -72.0
-offset_bottom = -48.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_left = 1
+anchor_top = 0
+anchor_right = 1
+anchor_bottom = 0
+offset_left = -286
+offset_top = 24
+offset_right = -28
+offset_bottom = 110
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="ClockLabel" type="Label" parent="Root/HUD/Clock"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 22
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 text = "DIA 1"
 horizontal_alignment = 2
 
@@ -371,8 +421,8 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 16
 text = "Anoitece em 04:00"
 horizontal_alignment = 2
@@ -381,8 +431,8 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 16
 text = "Farol · 0 m"
 horizontal_alignment = 2
@@ -390,119 +440,134 @@ horizontal_alignment = 2
 [node name="DirectionArrow" type="Label" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -370.0
-offset_top = -93.0
-offset_right = -338.0
-offset_bottom = -61.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_left = 1
+anchor_top = 0
+anchor_right = 1
+anchor_bottom = 0
+offset_left = -320
+offset_top = 76
+offset_right = -288
+offset_bottom = 108
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(16, 16)
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 24
-text = "▲"
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
+text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Objective" type="Label" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 10
-anchor_right = 1.0
-offset_left = 340.0
-offset_top = 25.0
-offset_right = -340.0
-offset_bottom = 57.0
+anchor_right = 0.5
+offset_left = -206
+offset_top = 64
+offset_right = 206
+offset_bottom = 92
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 17
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
+anchor_left = 0.5
+anchor_top = 0
+anchor_bottom = 0
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Toast" type="Label" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 10
-anchor_right = 1.0
-offset_left = 265.0
-offset_top = 72.0
-offset_right = -265.0
-offset_bottom = 134.0
+anchor_right = 0.5
+offset_left = -346
+offset_top = 144
+offset_right = 346
+offset_bottom = 196
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 20
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 autowrap_mode = 2
+anchor_left = 0.5
+anchor_top = 0
+anchor_bottom = 0
+grow_vertical = 2
+mouse_filter = 2
+vertical_alignment = 1
 
 [node name="Inventory" type="VBoxContainer" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 1
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -230.0
-offset_top = -139.0
-offset_right = 230.0
-offset_bottom = -116.0
+anchor_bottom = 1
+offset_left = -184
+offset_top = -94
+offset_right = 184
+offset_bottom = -70
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="BagLabel" type="Label" parent="Root/HUD/Inventory"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
 text = "MOCHILA  0 / 20"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
 
 [node name="BagItems" type="Label" parent="Root/HUD/Inventory"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 
 [node name="ResourceStrip" type="Control" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 1
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -230.0
-offset_top = -112.0
-offset_right = 230.0
-offset_bottom = -45.0
+anchor_bottom = 1
+offset_left = -184
+offset_top = -66
+offset_right = 184
+offset_bottom = -24
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="Wood" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_right = 84.0
-offset_bottom = 67.0
+offset_right = 72
+offset_bottom = 42
 tooltip_text = "Madeira"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+offset_left = 0
+offset_top = 0
 
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Wood"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 2
+offset_top = 4
+offset_right = 34
+offset_bottom = 36
 mouse_filter = 2
 texture = SubResource("Atlas_wood")
 expand_mode = 1
@@ -510,30 +575,32 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Wood"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 48.0
+offset_left = 34
+offset_top = 6
+offset_right = 70
+offset_bottom = 34
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stone" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 94.0
-offset_right = 178.0
-offset_bottom = 67.0
+offset_left = 74
+offset_right = 146
+offset_bottom = 42
 tooltip_text = "Pedra"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+offset_top = 0
 
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Stone"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 2
+offset_top = 4
+offset_right = 34
+offset_bottom = 36
 mouse_filter = 2
 texture = SubResource("Atlas_stone")
 expand_mode = 1
@@ -541,30 +608,32 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Stone"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 48.0
+offset_left = 34
+offset_top = 6
+offset_right = 70
+offset_bottom = 34
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Scrap" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 188.0
-offset_right = 272.0
-offset_bottom = 67.0
+offset_left = 148
+offset_right = 220
+offset_bottom = 42
 tooltip_text = "Sucata"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+offset_top = 0
 
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Scrap"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 2
+offset_top = 4
+offset_right = 34
+offset_bottom = 36
 mouse_filter = 2
 texture = SubResource("Atlas_scrap")
 expand_mode = 1
@@ -572,30 +641,32 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Scrap"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 48.0
+offset_left = 34
+offset_top = 6
+offset_right = 70
+offset_bottom = 34
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Part" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 282.0
-offset_right = 366.0
-offset_bottom = 67.0
+offset_left = 222
+offset_right = 294
+offset_bottom = 42
 tooltip_text = "Peças do farol"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+offset_top = 0
 
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Part"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 2
+offset_top = 4
+offset_right = 34
+offset_bottom = 36
 mouse_filter = 2
 texture = SubResource("Atlas_part")
 expand_mode = 1
@@ -603,30 +674,32 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Part"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 48.0
+offset_left = 34
+offset_top = 6
+offset_right = 70
+offset_bottom = 34
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Food" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 376.0
-offset_right = 460.0
-offset_bottom = 67.0
+offset_left = 296
+offset_right = 368
+offset_bottom = 42
 tooltip_text = "Comida"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
+offset_top = 0
 
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Food"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 2
+offset_top = 4
+offset_right = 34
+offset_bottom = 36
 mouse_filter = 2
 texture = SubResource("Atlas_food")
 expand_mode = 1
@@ -634,14 +707,15 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Food"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 48.0
+offset_left = 34
+offset_top = 6
+offset_right = 70
+offset_bottom = 34
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Controls" type="Label" parent="Root/HUD"]
 layout_mode = 1
@@ -655,30 +729,104 @@ offset_bottom = -22.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 12
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
 text = "WASD mover  ·  Shift correr  ·  E interagir  ·  Clique atacar  ·  Q comer  ·  Esc pausa"
 horizontal_alignment = 1
+visible = false
 
 [node name="Prompt" type="Label" parent="Root/HUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1
+anchor_right = 0.5
+anchor_bottom = 1
+offset_left = -304
+offset_top = -144
+offset_right = 304
+offset_bottom = -114
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+mouse_filter = 2
+vertical_alignment = 1
+
+[node name="Identity" type="Control" parent="Root/HUD"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 28.0
+offset_right = 84.0
+offset_bottom = 56.0
+mouse_filter = 2
+script = ExtResource("6_identity")
+
+[node name="Segments" type="Control" parent="Root/HUD/Status/Life"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("7_segments")
+
+[node name="Segments" type="Control" parent="Root/HUD/Status/Energy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("7_segments")
+
+[node name="Needle" type="Control" parent="Root/HUD/DirectionArrow"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+script = ExtResource("8_compass")
+
+[node name="PickupNotice" type="Panel" parent="Root/HUD"]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -315.0
-offset_top = -198.0
-offset_right = 315.0
-offset_bottom = -166.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 19
-horizontal_alignment = 1
+offset_left = -298.0
+offset_top = -64.0
+offset_right = -214.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+
+[node name="Icon" type="TextureRect" parent="Root/HUD/PickupNotice"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 36.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="Root/HUD/PickupNotice"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 34.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 16
+text = "+1"
+vertical_alignment = 1
 
 [node name="Shelter" type="PanelContainer" parent="Root"]
 visible = false

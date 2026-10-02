@@ -37,6 +37,8 @@ const STAGES := ["Reforçar a estrutura", "Restaurar o mecanismo", "Montar a lan
 @onready var toast_label: Label = $Root/HUD/Toast
 @onready var prompt_backdrop: Panel = $Root/HUD/PromptBackdrop
 @onready var toast_backdrop: Panel = $Root/HUD/ToastBackdrop
+@onready var pickup_notice: Panel = $Root/HUD/PickupNotice
+@onready var pickup_icon: TextureRect = $Root/HUD/PickupNotice/Icon
 
 @onready var modal_title: Label = $Root/Modal/Content/Title
 @onready var modal_subtitle: Label = $Root/Modal/Content/Subtitle
@@ -70,6 +72,7 @@ const STAGES := ["Reforçar a estrutura", "Restaurar o mecanismo", "Montar a lan
 @onready var deposit_button: Button = $Root/Shelter/Scroll/Column/Deposit
 
 var toast_timer := 0.0
+var pickup_timer := 0.0
 var stock_labels := {}
 var withdraw_buttons := {}
 var muted := false
@@ -213,9 +216,22 @@ func toast(message: String, duration: float = 4.0) -> void:
 	toast_label.modulate.a = 1.0
 	toast_backdrop.show()
 	toast_timer = duration
+	_layout_feedback()
+
+
+func show_pickup(kind: String) -> void:
+	if not resource_counts.has(kind):
+		return
+	pickup_icon.texture = (resource_counts[kind] as Label).get_parent().get_node("Icon").texture
+	pickup_notice.modulate.a = 1.0
+	pickup_notice.show()
+	pickup_timer = 1.2
 
 
 func _process(delta: float) -> void:
+	pickup_timer = maxf(0.0, pickup_timer - delta)
+	pickup_notice.visible = pickup_timer > 0.0
+	pickup_notice.modulate.a = minf(1.0, pickup_timer / 0.25)
 	if toast_timer > 0.0:
 		toast_timer -= delta
 		toast_label.modulate.a = minf(toast_timer, 1.0)
@@ -238,27 +254,60 @@ func set_lighthouse_direction(direction_to_lighthouse: Vector2) -> void:
 	direction_arrow.rotation = direction.angle() + PI / 2.0
 
 
+func _layout_feedback() -> void:
+	var font := hud.get_theme_font("font")
+	var font_size := 16
+	var text_width := font.get_string_size(toast_label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	var available_width := shelter.position.x - 32.0 if shelter.visible else root.size.x - 32.0
+	var width := minf(clampf(text_width + 28.0, 200.0, 660.0), available_width)
+	var center := shelter.position.x * 0.5 if shelter.visible else root.size.x * 0.5
+	var shift := center - root.size.x * 0.5
+	toast_backdrop.offset_left = shift - width * 0.5
+	toast_backdrop.offset_right = shift + width * 0.5
+	toast_label.offset_left = toast_backdrop.offset_left + 14.0
+	toast_label.offset_right = toast_backdrop.offset_right - 14.0
+	var text_height := font.get_multiline_string_size(toast_label.text, HORIZONTAL_ALIGNMENT_CENTER, width - 28.0, font_size).y
+	toast_backdrop.offset_bottom = toast_backdrop.offset_top + maxf(40.0, text_height + 16.0)
+	toast_label.offset_bottom = toast_backdrop.offset_bottom - 8.0
+
+
 func update_hud(state, distance: float, interaction: String, safe: bool) -> void:
 	life.value = state.health
 	energy.value = state.stamina
-	life_label.text = "VIDA  %d" % ceili(state.health)
-	energy_label.text = "ENERGIA  %d" % ceili(state.stamina)
-	clock_label.text = "NOITE %d" % state.day if state.is_night() else "DIA %d" % state.day
+	life_label.text = "Vida %d" % ceili(state.health)
+	energy_label.text = "Energia %d" % ceili(state.stamina)
+	clock_label.text = "Noite %d" % state.day if state.is_night() else "Dia %d" % state.day
 	var remaining: int = ceili((360.0 if state.is_night() else 240.0) - state.time_of_day)
 	phase_label.text = ("Amanhece em " if state.is_night() else "Anoitece em ") + "%02d:%02d" % [remaining / 60, remaining % 60]
 	direction_label.text = "Abrigo protegido" if safe else "Farol · %d m" % int(distance / 10.0)
 	if state.won:
-		objective.text = "O farol está aceso · Resgate a caminho"
+		objective.text = "Resgate a caminho"
 	elif state.repair_stage == 3:
-		objective.text = "Acenda o farol para chamar o resgate"
+		objective.text = "Acenda o farol"
 	else:
-		objective.text = "Farol %d/3 · %s" % [state.repair_stage, STAGES[state.repair_stage]]
-	bag_label.text = "MOCHILA  %d / 20" % state.bag_count()
+		objective.text = STAGES[state.repair_stage]
+	$Root/HUD/Identity.set_progress(state.repair_stage, state.won)
+	bag_label.text = "Mochila %d/20" % state.bag_count()
+	bag_label.modulate = AMBER if state.bag_count() >= 20 else PAPER
 	bag_items.text = "Madeira %d  Pedra %d  Sucata %d\nPeças %d  Comida %d" % [state.bag.wood, state.bag.stone, state.bag.scrap, state.bag.part, state.bag.food]
 	for kind: String in resource_counts:
 		(resource_counts[kind] as Label).text = str(state.bag[kind])
 	prompt.text = interaction if not shelter.visible else ""
 	prompt_backdrop.visible = not prompt.text.is_empty()
+	var prompt_width := clampf(hud.get_theme_font("font").get_string_size(prompt.text, HORIZONTAL_ALIGNMENT_LEFT, -1, 16).x + 28.0, 160.0, 600.0)
+	prompt_backdrop.offset_left = -prompt_width * 0.5
+	prompt_backdrop.offset_right = prompt_width * 0.5
+	prompt.offset_left = prompt_backdrop.offset_left + 14.0
+	prompt.offset_right = prompt_backdrop.offset_right - 14.0
+	_layout_feedback()
+	var inventory_shift := (shelter.position.x - root.size.x) * 0.5 if shelter.visible else 0.0
+	$Root/HUD/UnifiedBar.offset_left = -202.0 + inventory_shift
+	$Root/HUD/UnifiedBar.offset_right = 202.0 + inventory_shift
+	pickup_notice.offset_left = -298.0 + inventory_shift
+	pickup_notice.offset_right = -214.0 + inventory_shift
+	for strip: Control in [$Root/HUD/Inventory, $Root/HUD/ResourceStrip]:
+		strip.offset_left = -184.0 + inventory_shift
+		strip.offset_right = 184.0 + inventory_shift
 	if shelter.visible:
 		for kind: String in NAMES:
 			stock_labels[kind].text = "%s    %d / %d" % [NAMES[kind], state.storage[kind], state.bag[kind]]

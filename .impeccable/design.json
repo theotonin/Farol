@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T10:57:54.309626+00:00",
+  "title": "Design System: O Farol — Faroleiro",
+  "extensions": {
+    "sourcePlatform": "Godot 4.7.1",
+    "sourceFiles": [
+      "scenes/ui/game_ui.tscn",
+      "scripts/game_ui.gd",
+      "assets/ui/frame.svg",
+      "assets/ui/faroleiro.fnt"
+    ],
+    "colorMeta": {
+      "hud-sea": {
+        "role": "neutral",
+        "displayName": "Mar do HUD"
+      },
+      "hud-edge": {
+        "role": "neutral",
+        "displayName": "Pedra da moldura"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Texto claro"
+      },
+      "amber": {
+        "role": "primary",
+        "displayName": "Luz do farol"
+      },
+      "life": {
+        "role": "secondary",
+        "displayName": "Vida"
+      },
+      "energy": {
+        "role": "secondary",
+        "displayName": "Energia"
+      }
+    },
+    "breakpoints": [
+      {
+        "name": "reference",
+        "value": "1280×720"
+      },
+      {
+        "name": "minimum",
+        "value": "960×540"
+      }
+    ],
+    "feedback": {
+      "pickupSize": "84×40",
+      "pickupDuration": "1.2s",
+      "pickupFade": "0.25s",
+      "placement": "beside inventory; moves into free area when shelter is open",
+      "prompt": "width follows contextual action text",
+      "toast": "width and height follow text; important warnings remain separate from pickups"
+    }
+  },
+  "components": [
+    {
+      "name": "Moldura do HUD",
+      "kind": "custom",
+      "refersTo": "hud-panel",
+      "description": "Moldura em degraus; representação geométrica do componente nativo.",
+      "html": "<div class=\"ds-frame\"></div>",
+      "css": ".ds-frame{width:200px;height:60px;background:#142c32;border:2px solid #738477;clip-path:polygon(4px 0,calc(100% - 4px) 0,calc(100% - 4px) 2px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,0 calc(100% - 4px),0 4px)}"
+    },
+    {
+      "name": "Vida segmentada",
+      "kind": "custom",
+      "description": "Barra coral com dez divisões.",
+      "html": "<div class=\"ds-life\"></div>",
+      "css": ".ds-life{width:172px;height:8px;background:repeating-linear-gradient(to right,#db8c78 0 15px,#142c32 15px 17px)}"
+    },
+    {
+      "name": "Energia segmentada",
+      "kind": "custom",
+      "description": "Barra verde-mar com dez divisões.",
+      "html": "<div class=\"ds-energy\"></div>",
+      "css": ".ds-energy{width:172px;height:8px;background:repeating-linear-gradient(to right,#88c4b0 0 15px,#142c32 15px 17px)}"
+    },
+    {
+      "name": "Marcos de reparo",
+      "kind": "custom",
+      "refersTo": "repair-marker",
+      "description": "Três indicadores, preenchidos conforme os reparos.",
+      "html": "<div class=\"ds-stages\"><i></i><i></i><i></i></div>",
+      "css": ".ds-stages{display:flex;gap:12px}.ds-stages i{width:20px;height:6px;border:2px solid #48615c;background:#142c32}.ds-stages i:first-child{background:#efbd70}"
+    },
+    {
+      "name": "Slot de recurso",
+      "kind": "custom",
+      "description": "Moldura reta para ícone do atlas e quantidade.",
+      "html": "<div class=\"ds-slot\"></div>",
+      "css": ".ds-slot{width:72px;height:42px;background:#142c32;border:1px solid #435c57}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Faroleiro",
+    "overview": "A ilha e as decisões de sobrevivência vêm primeiro. O HUD usa a linguagem do farol: pedra clara, mar escuro, luz âmbar e instrumentos discretos.",
+    "keyCharacteristics": [
+      "Fonte bitmap original com acentos em português.",
+      "Molduras em degraus e desenho em grade de dois pixels.",
+      "Silhueta do farol e três marcos ligados aos reparos reais.",
+      "Centro livre para a ilha e mochila compacta."
+    ],
+    "rules": [],
+    "dos": [
+      "Do manter português e acentos legíveis.",
+      "Do usar nearest, sem mipmaps, nos elementos bitmap.",
+      "Do manter os ícones e as contagens dos recursos juntos."
+    ],
+    "donts": [
+      "Don't substituir os desenhos náuticos por emoji ou ícones de fonte.",
+      "Don't colocar avisos ou materiais atrás do painel do abrigo.",
+      "Don't alterar economia, combate ou salvamento ao modificar a apresentação."
+    ]
+  }
+}

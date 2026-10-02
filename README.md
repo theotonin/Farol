@@ -56,13 +56,22 @@ Arquivo: `user://save.json`, na pasta de dados da Godot para **O Farol**. O menu
 - `scenes/actors/`: jogador e inimigo como `CharacterBody2D`, com sprites animados e áreas de ataque/dano.
 - `scenes/objects/`: recursos como `Area2D`; farol, depósito e ruínas como `StaticBody2D`; fogueira atravessável como `Area2D` com luz.
 - `scenes/ui/game_ui.tscn`: árvore declarativa de menus, HUD e painel do abrigo em português.
-- `scripts/soundscape.gd`: efeitos sintetizados originais.
+- `assets/ui/`: fonte bitmap original e moldura do HUD Faroleiro; vida e energia segmentadas, bússola, marcos de reparo e mochila compacta.
+- `scripts/soundscape.gd`: trilha com transições entre exploração, noite e resgate, ambiente e efeitos sintetizados originais.
+- `assets/audio/`: três músicas originais e loops de oceano e fogueira; gerador em `tools/generate_audio.py`.
+- `Moodboard/`: sete capturas do jogo, sem interface, para montar o moodboard.
 - `assets/pixel/`: atlas de terreno 32×32, personagens e objetos rasterizados.
 - `docs/specs/prototipo.md`: escopo aprovado.
 
 O mapa usa `TileMapLayer` com `resources/island_tileset.tres`. O projeto define filtro `nearest`, não gera mipmaps nos PNGs e mantém a referência de 1280×720 para preservar pixels nítidos. A costa e as construções bloqueiam jogador e animais; fogueira, recursos, árvores, pedras pequenas e demais decorações são atravessáveis. Os gráficos pixel art e os efeitos sonoros são originais deste protótipo e não exigem bibliotecas, contas ou licenças externas.
 
 O fluxo, a física e a apresentação têm cobertura automática, mas ritmo, dificuldade e leitura durante movimento ainda devem ser avaliados em uma partida humana antes da apresentação escolar.
+
+A trilha muda automaticamente entre exploração, noite e resgate, com transições suaves.
+O oceano acompanha a ilha, a fogueira fica mais audível ao se aproximar e os passos
+acompanham caminhada e corrida. Golpes no ar e impactos têm efeitos diferentes.
+O botão **Som: ligado/desligado** do menu de pausa controla música, ambiente e efeitos.
+Veja `assets/audio/README.md` para regenerar os arquivos de áudio.
 
 ## Testes
 
@@ -75,6 +84,16 @@ XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot
 XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot --headless --path . --script tests/test_game.gd
 XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot --headless --path . --script tests/test_expedition.gd
 XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot --headless --path . --script tests/test_save_feedback.gd
+XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot --headless --path . --script tests/test_soundscape.gd
+XDG_DATA_HOME=/tmp/o-farol-tests XDG_CONFIG_HOME=/tmp/o-farol-tests-config godot --headless --path . --script tests/test_ui_visuals.gd
 ```
 
 As suítes cobrem regras, cenas, camadas e colisões físicas, combate nos quatro sentidos, integração de controles, coleta até o resgate, checkpoints e erros de salvamento. A expedição automatizada transporta o jogador entre recursos para verificar a economia; não substitui o playtest de dificuldade. O script opcional `tests/capture_game.gd` requer display gráfico e grava em `/tmp` capturas de menu, introdução, dia, abrigo, noite, combate, resgate e vitória.
+
+`tests/capture_moodboard.gd` requer display gráfico e grava somente imagens em
+`Moodboard/`: farol e abrigo, ruínas, praia, noite, sobrevivência, resgate e ilha.
+Execute com `godot --path . --script tests/capture_moodboard.gd`, usando os mesmos
+diretórios temporários de dados dos testes para preservar o seu salvamento.
+
+`tests/capture_hud.gd` captura o HUD de dia, à noite, com a mochila cheia e o
+abrigo aberto, nas janelas de 1280×720 e 960×540; as imagens são gravadas em `/tmp`.
