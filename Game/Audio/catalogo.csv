@@ -1,0 +1,18 @@
+﻿arquivo,uso,duracao_segundos,canais,taxa_hz,volume_no_jogo_db
+Trilha/exploracao.wav,Menu e exploração diurna,32.0,2,22050,-12
+Trilha/noite.wav,Introdução e exploração noturna,32.0,2,22050,-12
+Trilha/resgate.wav,Resgate e vitória,32.0,2,22050,-12
+Ambiente/oceano.wav,Ambiente do oceano,11.5,2,22050,-24
+Ambiente/fogueira.wav,Fogueira; volume varia com a distância,11.5,2,22050,-18
+Efeitos/passos.wav,Passos; variação de tom no jogo,0.09,1,22050,-21
+Efeitos/golpe-no-ar.wav,Movimento de ataque,0.18,1,22050,-10
+Efeitos/coleta.wav,Coleta de recurso,0.13,1,22050,-6
+Efeitos/impacto.wav,Ataque acertando um inimigo,0.1,1,22050,-6
+Efeitos/dano.wav,Jogador recebendo dano,0.24,1,22050,-6
+Efeitos/comer.wav,Consumo de alimento,0.18,1,22050,-6
+Efeitos/reparo.wav,Etapa de reparo do farol,0.48,1,22050,-6
+Efeitos/morte.wav,Morte do jogador,0.82,1,22050,-6
+Efeitos/amanhecer.wav,Início de um novo dia,0.72,1,22050,-6
+Efeitos/acender-farol.wav,Acendimento do farol,0.34,1,22050,-6
+Efeitos/clique-menu.wav,Interação com menu,0.045,1,22050,-6
+Efeitos/abastecer-fogueira.wav,Abastecimento da fogueira,0.3,1,22050,-6
