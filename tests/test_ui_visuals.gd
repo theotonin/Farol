@@ -72,6 +72,8 @@ func run() -> void:
 	ui.toast("Aviso importante de sobrevivência")
 	ui.toggle_shelter()
 	ui.update_hud(state, 100.0, "E  ·  Coletar madeira", false)
+	check(ui.fire_meter.value == state.fuel, "Medidor da fogueira deve acompanhar o combustível real")
+	check((ui.shelter_preview.texture as AtlasTexture).region.position.x == state.repair_stage * 64, "Arte do abrigo deve acompanhar a etapa do farol")
 	check(not ui.toast_backdrop.get_global_rect().intersects(ui.shelter.get_global_rect()), "Avisos não devem ficar escondidos atrás do abrigo")
 	check(not ui.hud.get_node("ResourceStrip").get_global_rect().intersects(ui.shelter.get_global_rect()), "Mochila deve permanecer totalmente visível com o abrigo aberto")
 	check(not prompt_backdrop.visible, "Abrigo aberto deve recolher o comando contextual")

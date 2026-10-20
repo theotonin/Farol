@@ -11,9 +11,9 @@ func set_progress(stage: int, won: bool) -> void:
 		queue_redraw()
 
 func _draw() -> void:
-	var amber := Color("efbd70")
-	var pale := Color("edf0dc")
-	var dim := Color("48615c")
+	var amber := Color("8f4f20")
+	var pale := Color("3b2415")
+	var dim := Color("9b6734")
 	# Lantern, roof, tapered masonry and the beam: the game's own landmark.
 	draw_rect(Rect2(12, 2, 8, 2), pale)
 	draw_rect(Rect2(10, 4, 12, 2), pale)
@@ -29,6 +29,6 @@ func _draw() -> void:
 	for index in 3:
 		var x := 48.0 + index * 36.0
 		draw_rect(Rect2(x, 10, 24, 10), dim)
-		draw_rect(Rect2(x + 2, 12, 20, 6), amber if index < repair_stage else Color("142c32"))
+		draw_rect(Rect2(x + 2, 12, 20, 6), amber if index < repair_stage else Color("5b3a20"))
 		if index < 2:
 			draw_rect(Rect2(x + 26, 14, 8, 2), dim)

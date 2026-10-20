@@ -14,6 +14,7 @@ const STAGES := ["Reforçar a estrutura", "Restaurar o mecanismo", "Montar a lan
 @onready var hud: Control = $Root/HUD
 @onready var modal: Control = $Root/Modal
 @onready var shelter: PanelContainer = $Root/Shelter
+@onready var shelter_preview: TextureRect = $Root/Shelter/Scroll/Column/Heading/Preview
 
 @onready var life: ProgressBar = $Root/HUD/Status/Life
 @onready var energy: ProgressBar = $Root/HUD/Status/Energy
@@ -65,6 +66,7 @@ const STAGES := ["Reforçar a estrutura", "Restaurar o mecanismo", "Montar a lan
 @onready var withdraw_part: Button = $Root/Shelter/Scroll/Column/Stock/Part/Withdraw
 @onready var withdraw_food: Button = $Root/Shelter/Scroll/Column/Stock/Food/Withdraw
 @onready var fire_label: Label = $Root/Shelter/Scroll/Column/FireLabel
+@onready var fire_meter: ProgressBar = $Root/Shelter/Scroll/Column/FireMeter
 @onready var repair_label: Label = $Root/Shelter/Scroll/Column/RepairLabel
 @onready var repair_button: Button = $Root/Shelter/Scroll/Column/Repair
 @onready var fuel_button: Button = $Root/Shelter/Scroll/Column/Fuel
@@ -301,19 +303,21 @@ func update_hud(state, distance: float, interaction: String, safe: bool) -> void
 	prompt.offset_right = prompt_backdrop.offset_right - 14.0
 	_layout_feedback()
 	var inventory_shift := (shelter.position.x - root.size.x) * 0.5 if shelter.visible else 0.0
-	$Root/HUD/UnifiedBar.offset_left = -202.0 + inventory_shift
-	$Root/HUD/UnifiedBar.offset_right = 202.0 + inventory_shift
-	pickup_notice.offset_left = -298.0 + inventory_shift
-	pickup_notice.offset_right = -214.0 + inventory_shift
+	$Root/HUD/UnifiedBar.offset_left = -175.0 + inventory_shift
+	$Root/HUD/UnifiedBar.offset_right = 175.0 + inventory_shift
+	pickup_notice.offset_left = -259.0 + inventory_shift
+	pickup_notice.offset_right = -181.0 + inventory_shift
 	for strip: Control in [$Root/HUD/Inventory, $Root/HUD/ResourceStrip]:
-		strip.offset_left = -184.0 + inventory_shift
-		strip.offset_right = 184.0 + inventory_shift
+		strip.offset_left = -157.0 + inventory_shift
+		strip.offset_right = 157.0 + inventory_shift
 	if shelter.visible:
+		(shelter_preview.texture as AtlasTexture).region = Rect2(state.repair_stage * 64, 160, 64, 96)
 		for kind: String in NAMES:
 			stock_labels[kind].text = "%s    %d / %d" % [NAMES[kind], state.storage[kind], state.bag[kind]]
 			withdraw_buttons[kind].disabled = state.storage[kind] <= 0 or state.bag_count() >= 20
 		deposit_button.disabled = state.bag_count() == 0
-		fire_label.text = "Fogueira · %ds de proteção noturna" % ceili(state.fuel)
+		fire_label.text = "FOGUEIRA  %ds / 240s" % ceili(state.fuel)
+		fire_meter.value = state.fuel
 		fuel_button.disabled = state.fuel >= 240 or state.bag.wood + state.storage.wood <= 0
 		var cost: Dictionary = state.next_cost()
 		var lines: PackedStringArray = []
@@ -322,7 +326,7 @@ func update_hud(state, distance: float, interaction: String, safe: bool) -> void
 			lines.append("%s %d/%d" % [NAMES[kind], state.storage[kind], cost[kind]])
 			if state.storage[kind] < cost[kind]:
 				can_repair = false
-		repair_label.text = "Farol pronto. Acenda a luz quando quiser partir." if state.repair_stage == 3 else "%s\n%s" % [STAGES[state.repair_stage], " · ".join(lines)]
+		repair_label.text = "FAROL PRONTO\nAcenda a luz quando quiser partir." if state.repair_stage == 3 else "REPARO %d/3  ·  %s\n%s" % [state.repair_stage + 1, STAGES[state.repair_stage], "  ·  ".join(lines)]
 		repair_button.visible = state.repair_stage < 3
 		repair_button.disabled = not can_repair
 		ignite_button.visible = state.repair_stage == 3
