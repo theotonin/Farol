@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3]
+[gd_scene load_steps=35 format=3]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ui"]
 [ext_resource type="Texture2D" path="res://assets/pixel/objects.png" id="2_objects"]
@@ -9,22 +9,23 @@
 [ext_resource type="Script" path="res://scripts/hud_identity.gd" id="6_identity"]
 [ext_resource type="Script" path="res://scripts/hud_bar_segments.gd" id="7_segments"]
 [ext_resource type="Script" path="res://scripts/hud_compass.gd" id="8_compass"]
+[ext_resource type="Texture2D" path="res://assets/ui/parchment.svg" id="9_parchment"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_button"]
-bg_color = Color(0.156863, 0.262745, 0.290196, 1)
+bg_color = Color(0.239216, 0.141176, 0.0823529, 1)
 content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-border_width_left = 1
+border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.403922, 0.435294, 0.356863, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+border_color = Color(0.603922, 0.403922, 0.203922, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
 bg_color = Color(0.937255, 0.741176, 0.439216, 1)
@@ -32,15 +33,15 @@ content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-border_width_left = 1
+border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 0.843137, 0.584314, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_button_pressed"]
 bg_color = Color(0.831373, 0.639216, 0.384314, 1)
@@ -48,31 +49,31 @@ content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-border_width_left = 1
+border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 0.843137, 0.584314, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_button_disabled"]
-bg_color = Color(0.113725, 0.2, 0.231373, 1)
+bg_color = Color(0.12549, 0.0941176, 0.0705882, 1)
 content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-border_width_left = 1
+border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.227451, 0.32549, 0.337255, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+border_color = Color(0.301961, 0.239216, 0.168627, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_focus"]
 bg_color = Color(0, 0, 0, 0)
@@ -88,23 +89,30 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBox_hud_frame"]
 texture = ExtResource("5_frame")
-texture_margin_left = 6.0
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_parchment"]
+texture = ExtResource("9_parchment")
+texture_margin_left = 8.0
 texture_margin_top = 6.0
-texture_margin_right = 6.0
+texture_margin_right = 8.0
 texture_margin_bottom = 6.0
 
 [sub_resource type="Theme" id="Theme_hud"]
 default_font = ExtResource("4_font")
 default_font_size = 16
-Label/colors/font_color = Color(0.929412, 0.941176, 0.862745, 1)
+Label/colors/font_color = Color(0.945098, 0.862745, 0.682353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_hud_slot"]
-bg_color = Color(0.0784314, 0.164706, 0.184314, 0.92)
+bg_color = Color(0.188235, 0.117647, 0.0745098, 0.96)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.262745, 0.360784, 0.341176, 1)
+border_color = Color(0.603922, 0.403922, 0.203922, 1)
 corner_radius_top_left = 0
 corner_radius_top_right = 0
 corner_radius_bottom_right = 0
@@ -134,36 +142,56 @@ region = Rect2(96, 8, 32, 32)
 atlas = ExtResource("2_objects")
 region = Rect2(128, 8, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_menu_frame"]
-bg_color = Color(0.0352941, 0.0901961, 0.113725, 0.98)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.65098, 0.545098, 0.34902, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="AtlasTexture" id="Atlas_shelter"]
+atlas = ExtResource("2_objects")
+region = Rect2(0, 160, 64, 96)
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
-bg_color = Color(0.0901961, 0.172549, 0.203922, 0.97)
-content_margin_left = 16.0
-content_margin_top = 10.0
-content_margin_right = 16.0
-content_margin_bottom = 10.0
-border_width_left = 2
+[sub_resource type="AtlasTexture" id="Atlas_menu_lighthouse"]
+atlas = ExtResource("2_objects")
+region = Rect2(192, 160, 64, 96)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_frame"]
+bg_color = Color(0.0705882, 0.0588235, 0.0431373, 0.98)
+border_width_left = 5
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.403922, 0.435294, 0.356863, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+border_color = Color(0.65098, 0.545098, 0.34902, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 10
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+bg_color = Color(0.0823529, 0.0705882, 0.0509804, 0.985)
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+border_width_left = 4
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.603922, 0.403922, 0.203922, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 8
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_separator"]
+bg_color = Color(0.470588, 0.329412, 0.188235, 1)
+content_margin_top = 1.0
+content_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_fire_fill"]
+bg_color = Color(0.937255, 0.741176, 0.439216, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_bar_background"]
-bg_color = Color(0.12549, 0.215686, 0.239216, 1)
+bg_color = Color(0.101961, 0.0823529, 0.0588235, 1)
 corner_radius_top_left = 0
 corner_radius_top_right = 0
 corner_radius_bottom_right = 0
@@ -184,6 +212,7 @@ corner_radius_bottom_right = 0
 corner_radius_bottom_left = 0
 
 [sub_resource type="Theme" id="Theme_game"]
+default_font = ExtResource("4_font")
 default_font_size = 18
 Button/colors/font_color = Color(0.929412, 0.941176, 0.862745, 1)
 Button/colors/font_disabled_color = Color(0.45098, 0.552941, 0.568627, 1)
@@ -227,10 +256,10 @@ layout_mode = 1
 anchors_preset = 12
 anchor_right = 0.5
 anchor_bottom = 1
-offset_left = -202
-offset_top = -100
-offset_right = 202
-offset_bottom = -16
+offset_left = -175.0
+offset_top = -88.0
+offset_right = 175.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -242,13 +271,13 @@ anchor_top = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 0.5
-offset_left = -218
-offset_top = 16
-offset_right = 218
-offset_bottom = 100
+offset_left = -184.0
+offset_top = 14.0
+offset_right = 184.0
+offset_bottom = 82.0
 grow_horizontal = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+theme_override_styles/panel = SubResource("StyleBox_parchment")
 anchor_left = 0.5
 anchor_top = 0
 anchor_bottom = 0
@@ -263,13 +292,13 @@ anchor_top = 1
 anchor_right = 0.5
 anchor_bottom = 1
 offset_left = -320
-offset_top = -150
+offset_top = -136.0
 offset_right = 320
-offset_bottom = -110
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBox_hud_frame")
+theme_override_styles/panel = SubResource("StyleBox_parchment")
 
 [node name="ToastBackdrop" type="Panel" parent="Root/HUD"]
 visible = false
@@ -290,10 +319,10 @@ grow_vertical = 2
 
 [node name="StatusBackdrop" type="Panel" parent="Root/HUD"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 296.0
-offset_bottom = 124.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 264.0
+offset_bottom = 104.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 
@@ -301,10 +330,10 @@ theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 layout_mode = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -336.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 124.0
+offset_left = -282.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 104.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
@@ -314,10 +343,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 0
 anchor_bottom = 0
-offset_left = 104
-offset_top = 28
-offset_right = 282
-offset_bottom = 110
+offset_left = 82.0
+offset_top = 24.0
+offset_right = 250.0
+offset_bottom = 94.0
 grow_vertical = 2
 theme_override_constants/separation = 2
 anchor_left = 0
@@ -334,7 +363,7 @@ theme_override_font_sizes/font_size = 16
 text = "VIDA  100"
 
 [node name="Life" type="ProgressBar" parent="Root/HUD/Status"]
-custom_minimum_size = Vector2(172, 8)
+custom_minimum_size = Vector2(158, 7)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBox_bar_background")
 theme_override_styles/fill = SubResource("StyleBox_life_fill")
@@ -351,7 +380,7 @@ theme_override_font_sizes/font_size = 16
 text = "ENERGIA  100"
 
 [node name="Energy" type="ProgressBar" parent="Root/HUD/Status"]
-custom_minimum_size = Vector2(172, 8)
+custom_minimum_size = Vector2(158, 7)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBox_bar_background")
 theme_override_styles/fill = SubResource("StyleBox_energy_fill")
@@ -363,10 +392,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 0
 anchor_bottom = 0
-offset_left = 28
-offset_top = 28
-offset_right = 92
-offset_bottom = 108
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 94.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
@@ -380,10 +409,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 0
 anchor_bottom = 0
-offset_left = 28
-offset_top = 34
-offset_right = 92
-offset_bottom = 98
+offset_left = 24.0
+offset_top = 30.0
+offset_right = 72.0
+offset_bottom = 78.0
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("Atlas_portrait")
@@ -400,10 +429,10 @@ anchor_left = 1
 anchor_top = 0
 anchor_right = 1
 anchor_bottom = 0
-offset_left = -286
-offset_top = 24
-offset_right = -28
-offset_bottom = 110
+offset_left = -246.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -444,10 +473,10 @@ anchor_left = 1
 anchor_top = 0
 anchor_right = 1
 anchor_bottom = 0
-offset_left = -320
-offset_top = 76
-offset_right = -288
-offset_bottom = 108
+offset_left = -270.0
+offset_top = 62.0
+offset_right = -238.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(16, 16)
@@ -465,12 +494,12 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 0.5
-offset_left = -206
-offset_top = 64
-offset_right = 206
-offset_bottom = 92
+offset_left = -172.0
+offset_top = 52.0
+offset_right = 172.0
+offset_bottom = 74.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_colors/font_color = Color(0.184314, 0.105882, 0.054902, 1)
 theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
@@ -511,10 +540,10 @@ anchor_left = 0.5
 anchor_top = 1
 anchor_right = 0.5
 anchor_bottom = 1
-offset_left = -184
-offset_top = -94
-offset_right = 184
-offset_bottom = -70
+offset_left = -157.0
+offset_top = -82.0
+offset_right = 157.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -544,18 +573,18 @@ anchor_left = 0.5
 anchor_top = 1
 anchor_right = 0.5
 anchor_bottom = 1
-offset_left = -184
-offset_top = -66
-offset_right = 184
-offset_bottom = -24
+offset_left = -157.0
+offset_top = -58.0
+offset_right = 157.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Wood" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_right = 72
-offset_bottom = 42
+offset_right = 62.0
+offset_bottom = 38.0
 tooltip_text = "Madeira"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
 offset_left = 0
@@ -564,10 +593,10 @@ offset_top = 0
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Wood"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 2
-offset_top = 4
-offset_right = 34
-offset_bottom = 36
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 35.0
 mouse_filter = 2
 texture = SubResource("Atlas_wood")
 expand_mode = 1
@@ -575,10 +604,10 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Wood"]
 layout_mode = 0
-offset_left = 34
-offset_top = 6
-offset_right = 70
-offset_bottom = 34
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_font_sizes/font_size = 16
 text = "0"
@@ -587,9 +616,9 @@ vertical_alignment = 1
 
 [node name="Stone" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 74
-offset_right = 146
-offset_bottom = 42
+offset_left = 64.0
+offset_right = 126.0
+offset_bottom = 38.0
 tooltip_text = "Pedra"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
 offset_top = 0
@@ -597,10 +626,10 @@ offset_top = 0
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Stone"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 2
-offset_top = 4
-offset_right = 34
-offset_bottom = 36
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 35.0
 mouse_filter = 2
 texture = SubResource("Atlas_stone")
 expand_mode = 1
@@ -608,10 +637,10 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Stone"]
 layout_mode = 0
-offset_left = 34
-offset_top = 6
-offset_right = 70
-offset_bottom = 34
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_font_sizes/font_size = 16
 text = "0"
@@ -620,9 +649,9 @@ vertical_alignment = 1
 
 [node name="Scrap" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 148
-offset_right = 220
-offset_bottom = 42
+offset_left = 128.0
+offset_right = 190.0
+offset_bottom = 38.0
 tooltip_text = "Sucata"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
 offset_top = 0
@@ -630,10 +659,10 @@ offset_top = 0
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Scrap"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 2
-offset_top = 4
-offset_right = 34
-offset_bottom = 36
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 35.0
 mouse_filter = 2
 texture = SubResource("Atlas_scrap")
 expand_mode = 1
@@ -641,10 +670,10 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Scrap"]
 layout_mode = 0
-offset_left = 34
-offset_top = 6
-offset_right = 70
-offset_bottom = 34
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_font_sizes/font_size = 16
 text = "0"
@@ -653,9 +682,9 @@ vertical_alignment = 1
 
 [node name="Part" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 222
-offset_right = 294
-offset_bottom = 42
+offset_left = 192.0
+offset_right = 254.0
+offset_bottom = 38.0
 tooltip_text = "Peças do farol"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
 offset_top = 0
@@ -663,10 +692,10 @@ offset_top = 0
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Part"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 2
-offset_top = 4
-offset_right = 34
-offset_bottom = 36
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 35.0
 mouse_filter = 2
 texture = SubResource("Atlas_part")
 expand_mode = 1
@@ -674,10 +703,10 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Part"]
 layout_mode = 0
-offset_left = 34
-offset_top = 6
-offset_right = 70
-offset_bottom = 34
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_font_sizes/font_size = 16
 text = "0"
@@ -686,9 +715,9 @@ vertical_alignment = 1
 
 [node name="Food" type="Panel" parent="Root/HUD/ResourceStrip"]
 layout_mode = 0
-offset_left = 296
-offset_right = 368
-offset_bottom = 42
+offset_left = 256.0
+offset_right = 318.0
+offset_bottom = 38.0
 tooltip_text = "Comida"
 theme_override_styles/panel = SubResource("StyleBox_hud_slot")
 offset_top = 0
@@ -696,10 +725,10 @@ offset_top = 0
 [node name="Icon" type="TextureRect" parent="Root/HUD/ResourceStrip/Food"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 2
-offset_top = 4
-offset_right = 34
-offset_bottom = 36
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 35.0
 mouse_filter = 2
 texture = SubResource("Atlas_food")
 expand_mode = 1
@@ -707,10 +736,10 @@ stretch_mode = 5
 
 [node name="Count" type="Label" parent="Root/HUD/ResourceStrip/Food"]
 layout_mode = 0
-offset_left = 34
-offset_top = 6
-offset_right = 70
-offset_bottom = 34
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
 theme_override_font_sizes/font_size = 16
 text = "0"
@@ -744,12 +773,13 @@ anchor_top = 1
 anchor_right = 0.5
 anchor_bottom = 1
 offset_left = -304
-offset_top = -144
+offset_top = -130.0
 offset_right = 304
-offset_bottom = -114
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0.01, 0.03, 0.04, 0.9)
+theme_override_colors/font_color = Color(0.184314, 0.105882, 0.054902, 1)
+theme_override_colors/font_shadow_color = Color(0.933333, 0.764706, 0.454902, 0.8)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 16
@@ -761,10 +791,10 @@ vertical_alignment = 1
 layout_mode = 1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -84.0
-offset_top = 28.0
-offset_right = 84.0
-offset_bottom = 56.0
+offset_left = -76.0
+offset_top = 22.0
+offset_right = 76.0
+offset_bottom = 48.0
 mouse_filter = 2
 script = ExtResource("6_identity")
 
@@ -798,10 +828,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -298.0
-offset_top = -64.0
-offset_right = -214.0
-offset_bottom = -24.0
+offset_left = -259.0
+offset_top = -58.0
+offset_right = -181.0
+offset_bottom = -20.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_hud_frame")
 
@@ -834,11 +864,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -470.0
-offset_top = 120.0
-offset_right = -30.0
-offset_bottom = 690.0
+anchor_bottom = 1.0
+offset_left = -410.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = -18.0
 grow_horizontal = 0
+grow_vertical = 2
 mouse_filter = 0
 
 [node name="Scroll" type="ScrollContainer" parent="Root/Shelter"]
@@ -847,160 +879,256 @@ horizontal_scroll_mode = 0
 follow_focus = true
 
 [node name="Column" type="VBoxContainer" parent="Root/Shelter/Scroll"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(354, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 6
+theme_override_constants/separation = 5
 
 [node name="Heading" type="HBoxContainer" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Preview" type="TextureRect" parent="Root/Shelter/Scroll/Column/Heading"]
+custom_minimum_size = Vector2(50, 76)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_shelter")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="Root/Shelter/Scroll/Column/Heading"]
 layout_mode = 2
+size_flags_vertical = 1
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "Abrigo do farol"
+theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
+theme_override_font_sizes/font_size = 22
+text = "ABRIGO\nDO FAROL"
+vertical_alignment = 1
 
 [node name="Close" type="Button" parent="Root/Shelter/Scroll/Column/Heading"]
-custom_minimum_size = Vector2(92, 42)
+custom_minimum_size = Vector2(54, 36)
 layout_mode = 2
+size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-text = "Fechar"
+tooltip_text = "Fechar abrigo"
+text = "X"
 
 [node name="Warning" type="Label" parent="Root/Shelter/Scroll/Column"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
-theme_override_font_sizes/font_size = 14
-text = "O tempo continua. Volte antes de escurecer."
+theme_override_font_sizes/font_size = 13
+text = "O tempo continua lá fora."
+
+[node name="TopRule" type="HSeparator" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBox_separator")
 
 [node name="InventoryHeading" type="Label" parent="Root/Shelter/Scroll/Column"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 13
-text = "DEPÓSITO                         GUARDADO / MOCHILA"
+theme_override_font_sizes/font_size = 14
+text = "DEPÓSITO             GUARDADO / MOCHILA"
 
 [node name="Stock" type="VBoxContainer" parent="Root/Shelter/Scroll/Column"]
 layout_mode = 2
 theme_override_constants/separation = 3
 
 [node name="Wood" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Root/Shelter/Scroll/Column/Stock/Wood"]
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_wood")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Wood"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Madeira    0 / 0"
+vertical_alignment = 1
 
 [node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Wood"]
-custom_minimum_size = Vector2(108, 30)
+custom_minimum_size = Vector2(64, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 mouse_default_cursor_shape = 2
-text = "Retirar 1"
+tooltip_text = "Retirar 1 madeira"
+text = "- 1"
 
 [node name="Stone" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Root/Shelter/Scroll/Column/Stock/Stone"]
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_stone")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Stone"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Pedra    0 / 0"
+vertical_alignment = 1
 
 [node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Stone"]
-custom_minimum_size = Vector2(108, 30)
+custom_minimum_size = Vector2(64, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 mouse_default_cursor_shape = 2
-text = "Retirar 1"
+tooltip_text = "Retirar 1 pedra"
+text = "- 1"
 
 [node name="Scrap" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Root/Shelter/Scroll/Column/Stock/Scrap"]
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_scrap")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Scrap"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Sucata    0 / 0"
+vertical_alignment = 1
 
 [node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Scrap"]
-custom_minimum_size = Vector2(108, 30)
+custom_minimum_size = Vector2(64, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 mouse_default_cursor_shape = 2
-text = "Retirar 1"
+tooltip_text = "Retirar 1 sucata"
+text = "- 1"
 
 [node name="Part" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Root/Shelter/Scroll/Column/Stock/Part"]
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_part")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Part"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Peças    0 / 0"
+vertical_alignment = 1
 
 [node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Part"]
-custom_minimum_size = Vector2(108, 30)
+custom_minimum_size = Vector2(64, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 mouse_default_cursor_shape = 2
-text = "Retirar 1"
+tooltip_text = "Retirar 1 peça"
+text = "- 1"
 
 [node name="Food" type="HBoxContainer" parent="Root/Shelter/Scroll/Column/Stock"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Root/Shelter/Scroll/Column/Stock/Food"]
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("Atlas_food")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Root/Shelter/Scroll/Column/Stock/Food"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Comida    0 / 0"
+vertical_alignment = 1
 
 [node name="Withdraw" type="Button" parent="Root/Shelter/Scroll/Column/Stock/Food"]
-custom_minimum_size = Vector2(108, 30)
+custom_minimum_size = Vector2(64, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 mouse_default_cursor_shape = 2
-text = "Retirar 1"
+tooltip_text = "Retirar 1 comida"
+text = "- 1"
 
 [node name="Deposit" type="Button" parent="Root/Shelter/Scroll/Column"]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Guardar toda a mochila"
+text = "GUARDAR MOCHILA"
+
+[node name="FireRule" type="HSeparator" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBox_separator")
 
 [node name="FireLabel" type="Label" parent="Root/Shelter/Scroll/Column"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.741176, 0.439216, 1)
-theme_override_font_sizes/font_size = 16
-text = "Fogueira · 0s de proteção noturna"
+theme_override_font_sizes/font_size = 15
+text = "FOGUEIRA  0s / 240s"
+
+[node name="FireMeter" type="ProgressBar" parent="Root/Shelter/Scroll/Column"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 240.0
+theme_override_styles/background = SubResource("StyleBox_bar_background")
+theme_override_styles/fill = SubResource("StyleBox_fire_fill")
+show_percentage = false
 
 [node name="Fuel" type="Button" parent="Root/Shelter/Scroll/Column"]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Abastecer fogueira · 1 madeira / 30s"
+text = "ABASTECER  +30s  (1 madeira)"
+
+[node name="RepairRule" type="HSeparator" parent="Root/Shelter/Scroll/Column"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBox_separator")
 
 [node name="RepairLabel" type="Label" parent="Root/Shelter/Scroll/Column"]
-custom_minimum_size = Vector2(400, 44)
+custom_minimum_size = Vector2(354, 44)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.701961, 0.780392, 0.764706, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 14
 text = "Reforçar a estrutura"
 autowrap_mode = 2
 
 [node name="Repair" type="Button" parent="Root/Shelter/Scroll/Column"]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Concluir reparo"
+text = "CONCLUIR REPARO"
 
 [node name="Ignite" type="Button" parent="Root/Shelter/Scroll/Column"]
 visible = false
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Acender o farol e chamar resgate"
+text = "ACENDER O FAROL"
 
 [node name="Modal" type="Control" parent="Root"]
 layout_mode = 1
@@ -1027,14 +1155,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -370.0
+offset_left = -430.0
 offset_top = -310.0
-offset_right = 370.0
+offset_right = 430.0
 offset_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_menu_frame")
+
+[node name="LighthouseArt" type="TextureRect" parent="Root/Modal"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.0
+offset_top = -250.0
+offset_right = -342.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("Atlas_menu_lighthouse")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Content" type="VBoxContainer" parent="Root/Modal"]
 layout_mode = 1
@@ -1050,6 +1197,7 @@ offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="Title" type="Label" parent="Root/Modal/Content"]
 layout_mode = 2
